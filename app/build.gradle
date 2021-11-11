@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk application.maxApi
+    compileSdk application.compileSdk
 
     defaultConfig {
         applicationId application.id
-        minSdk application.minApi
+        minSdk application.minSdk
         targetSdk application.targetSdk
         versionCode application.versionCode
         versionName application.versionName
@@ -47,4 +47,6 @@ dependencies {
     testImplementation (test.junit)
     androidTestImplementation (androidTest.androidxJunit)
     androidTestImplementation (androidTest.androidxEspressoCore)
+    implementation(libraries.koinAndroid)
+
 }

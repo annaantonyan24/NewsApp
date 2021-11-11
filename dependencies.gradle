@@ -18,7 +18,7 @@ ext {
             "androidxRecyclerView"    : "1.2.0",
             "koin"                    : "3.1.2",
             "retrofitVersion"         : '2.9.0',
-            "moshiConverterVersion"   : '2.9.0',
+            "gsonConverterVersion"    : '2.9.0',
             "loggingVersion"          : '5.0.0-alpha.2',
             "roomVersion"             : '2.2.5',
             "navVersion"              : '2.3.5',
@@ -32,8 +32,8 @@ ext {
 
     application = [
             "id"         : "com.example.diplomayin",
-            "minApi"     : 21,
-            "maxApi"     : 31,
+            "minSdk"     : 21,
+            "compileSdk" : 31,
             "targetSdk"  : 31,
             "versionCode": 1,
             "versionName": "1.0.0",
@@ -51,7 +51,7 @@ ext {
             "coil"              : "io.coil-kt:coil:$versions.coilVersion",
             "koinAndroid"       : "io.insert-koin:koin-android:$versions.koin",
             "retrofit"          : "com.squareup.retrofit2:retrofit:$versions.retrofitVersion",
-            "moshiConverter"    : "com.squareup.retrofit2:converter-moshi:$versions.moshiConverterVersion",
+            "gsonConverter"     : "com.squareup.retrofit2:converter-gson:$versions.gsonConverterVersion",
             "loggingInterceptor": "com.squareup.okhttp3:logging-interceptor:$versions.loggingVersion",
             "coroutines"        : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion",
     ]

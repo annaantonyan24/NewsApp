@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    compileSdk application.maxApi
+    compileSdk application.compileSdk
 
     defaultConfig {
-        minSdk application.minApi
+        minSdk application.minSdk
         targetSdk application.targetSdk
         versionCode application.versionCode
         versionName application.versionName
