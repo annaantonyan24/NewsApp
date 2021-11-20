@@ -10,6 +10,6 @@ class NewsRepositoryImpl(private val newsApiService: NewsApiService) : NewsRepos
 
     override suspend fun getNewsData(): Result<News> =
         makeApiCall({
-            analyzeResponse(newsApiService.getNews())
+            analyzeResponse(newsApiService.getAllNews())
         })
 }
