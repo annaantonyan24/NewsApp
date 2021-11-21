@@ -6,16 +6,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface NewsApiService {
-//    @GET("news")
-//    suspend fun getNews(
-//        @Query("access_key") key: String = "85025b50dcb44477d3b96c365971f8bc",
-//        @Query("languages") languages: String = "en"
-//    ): Response<News>
 
-    @GET("content/all/all.json")
+    @GET("top-headlines")
     suspend fun getAllNews(
-        @Query("api-key") key: String = "FbfTzoGKqg7CG43sCF30v1P6ASZ66SRs"
+        @Query("language") language: String = "en",
+        @Query("apiKey") key: String = "b26b52df3c3a497d84cf0ff59b0537de"
     ): Response<News>
-
 
 }

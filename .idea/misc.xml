@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/drawable/bnv_tab_item_foreground.xml" value="0.1925925925925926" />
+        <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/drawable/bottom_nav_bar_colors.xml" value="0.19444444444444445" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/drawable/ic_baseline_search.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/drawable/ic_newspaper_news.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/drawable/ic_outline_favorite.xml" value="0.18333333333333332" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/layout/activity_splash.xml" value="0.17395833333333333" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/layout/fragment_favorites.xml" value="0.17239583333333333" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/layout/fragment_news.xml" value="0.17980072463768115" />
         <entry key="..\:/AndroidStudioProjects/diplomayin/app/src/main/res/layout/fragment_profile.xml" value="0.17028985507246377" />
