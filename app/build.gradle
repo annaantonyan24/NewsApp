@@ -46,8 +46,8 @@ dependencies {
     implementation (androidXLibraries.constraintLayout)
     implementation (androidXLibraries.navigationFragmentKtx)
     implementation (androidXLibraries.navigationUiKtx)
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation (libraries.kotlinStdLib)
+    implementation (androidXLibraries.legacySupport)
     testImplementation (test.junit)
     androidTestImplementation (androidTest.androidxJunit)
     androidTestImplementation (androidTest.androidxEspressoCore)

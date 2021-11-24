@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import com.example.diplomayin.R
 import com.example.diplomayin.adapters.ViewPagerAdapter
 import com.example.diplomayin.databinding.FragmentNewsBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
+@Suppress("DEPRECATION")
 class NewsFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsBinding
@@ -32,10 +34,6 @@ class NewsFragment : Fragment() {
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
 
-        val layoutParams = tabLayout.layoutParams as ConstraintLayout.LayoutParams
-        layoutParams.topMargin = 120
-
-
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
@@ -44,6 +42,5 @@ class NewsFragment : Fragment() {
 
         return binding.root
     }
-
 
 }
