@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.diplomayin.R
-import com.example.diplomayin.databinding.FragmentAllNewsBinding
+import com.example.diplomayin.databinding.FragmentNewsDevelopersBinding
 
-class AllNewsFragment : Fragment() {
 
-    private lateinit var binding: FragmentAllNewsBinding
+class NewsDevelopersFragment : Fragment() {
+    private  lateinit var binding: FragmentNewsDevelopersBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAllNewsBinding.inflate(inflater,container,false)
+        binding = FragmentNewsDevelopersBinding.inflate(inflater,container,false)
         return binding.root
     }
 
