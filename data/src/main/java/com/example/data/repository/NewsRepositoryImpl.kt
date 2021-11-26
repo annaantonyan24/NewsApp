@@ -8,7 +8,7 @@ import com.example.data.util.makeApiCall
 
 class NewsRepositoryImpl(private val newsApiService: NewsApiService) : NewsRepository {
 
-    override suspend fun getNewsData(): Result<News> =
+    override suspend fun getAllNewsData(): Result<News> =
         makeApiCall({
             analyzeResponse(newsApiService.getAllNews())
         })

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="checked_icon">#ab000d</color>
     <color name="unchecked_icon">#E44C3C</color>
+    <color name="background_Color">#E6DDDD</color>
 </resources>
