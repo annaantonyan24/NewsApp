@@ -18,5 +18,6 @@ class App: Application() {
 
     private val modules = listOf(
         apiModule
+//        repositoryModule
     )
 }

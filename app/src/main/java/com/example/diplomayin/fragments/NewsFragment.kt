@@ -18,7 +18,7 @@ class NewsFragment : Fragment() {
     private val fragmentsArray = arrayOf(
         "All News",
         "Popular",
-        "Developers"
+        "Development"
     )
 
     override fun onCreateView(
