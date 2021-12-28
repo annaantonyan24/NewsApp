@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':core')
+    implementation project(path: ':data')
 
     implementation (androidXLibraries.coreKtx)
     implementation (androidXLibraries.appCompat)
@@ -39,4 +41,6 @@ dependencies {
     testImplementation (test.junit)
     androidTestImplementation (androidTest.androidxJunit)
     androidTestImplementation (androidTest.androidxEspressoCore)
+    implementation(libraries.koinAndroid)
+    implementation(libraries.coroutines)
 }
