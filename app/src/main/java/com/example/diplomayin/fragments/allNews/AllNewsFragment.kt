@@ -1,4 +1,4 @@
-package com.example.diplomayin.fragments
+package com.example.diplomayin.fragments.allNews
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.data.model.Article
 import com.example.data.model.Source
-import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
 
