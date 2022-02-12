@@ -6,18 +6,19 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.data.model.Article
+import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
+import com.example.domain.model.Data
 
 class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Article>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
 
-        override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
+        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean =
             oldItem.url == newItem.url
 
-        override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
+        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean =
             oldItem == newItem
     }
 
@@ -26,7 +27,7 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class FirstItemViewHolder(private val binding: ItemNewsFirstBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Article) {
+        fun bind(article: Data) {
             with(binding) {
                 tvAuthor.text = article.author
                 tvDescription.text = article.description
@@ -35,6 +36,7 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             Glide.with(binding.root)
                 .load(article.urlToImage)
+                .placeholder(R.drawable.news_placeholder)
                 .centerCrop()
                 .into(binding.ivNews)
         }
@@ -44,7 +46,7 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Article) {
+        fun bind(article: Data) {
             with(binding) {
                 tvAuthor.text = article.author
                 tvDescription.text = article.description

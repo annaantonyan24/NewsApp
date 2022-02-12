@@ -1,14 +1,13 @@
-package com.example.diplomayin.fragments
+package com.example.diplomayin.fragments.popularNews
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.diplomayin.R
 import com.example.diplomayin.databinding.FragmentNewsPopularBinding
 
-class NewsPopularFragment : Fragment() {
+class PopularNewsFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsPopularBinding
     override fun onCreateView(

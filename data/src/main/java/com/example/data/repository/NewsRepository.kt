@@ -6,4 +6,5 @@ import com.example.data.model.News
 interface NewsRepository {
 
     suspend fun getAllNewsData():ActionResult<News>
+    suspend fun getPopularNewsData():ActionResult<News>
 }

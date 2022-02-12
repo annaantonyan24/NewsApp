@@ -53,6 +53,15 @@ dependencies {
     androidTestImplementation (androidTest.androidxEspressoCore)
     implementation(libraries.koinAndroid)
 
+    implementation(androidXLibraries.coreKtx)
+    implementation(androidXLibraries.legacySupport)
+    implementation(androidXLibraries.navigationFragmentKtx)
+    implementation(androidXLibraries.navigationUiKtx)
+    implementation(androidXLibraries.lifecycleCommon)
+    implementation(androidXLibraries.constraintLayout)
+    implementation(libraries.material)
+    implementation(libraries.coil)
+
     implementation (libraries.glide)
     annotationProcessor (libraries.glideCompiler)
 }

@@ -1,45 +1,55 @@
 package com.example.diplomayin.fragments.allNews
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.data.model.Article
 import com.example.data.model.Source
+import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
+import com.example.diplomayin.utils.viewBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class AllNewsFragment : Fragment() {
+class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
 
-    private lateinit var binding: FragmentAllNewsBinding
+    private val viewModel: AllNewsViewModel by viewModel()
+    override val binding: FragmentAllNewsBinding by viewBinding()
+
     private var newsAdapter = NewsListAdapter()
     private val placesList = arrayListOf<Article>()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentAllNewsBinding.inflate(inflater, container, false)
-        return binding.root
 
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+////        initList()
+////        initRecyclerView()
+//
+//    }
+
+    override fun onView() {
+        with(binding) {
+            rvNews.apply {
+                context?.let {
+                    layoutManager = LinearLayoutManager(it)
+                    setHasFixedSize(true)
+                    adapter = newsAdapter
+                }
+            }
+        }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        initList()
-        initRecyclerView()
-
+    override fun onEach() {
+        onEach(viewModel.list){
+            newsAdapter.differ.submitList(it)
+        }
     }
+
 
     private fun initRecyclerView() {
 
-        with(binding){
+        with(binding) {
             rvNews.layoutManager = LinearLayoutManager(context)
             rvNews.adapter = newsAdapter
-            newsAdapter.differ.submitList(placesList)
         }
 
     }
