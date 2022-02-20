@@ -1,25 +1,16 @@
-package com.example.diplomayin.fragments.popularNews
+package com.example.diplomayin.fragments.developersNews
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.model.Article
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.adapters.NewsListAdapter
-import com.example.diplomayin.databinding.FragmentAllNewsBinding
-import com.example.diplomayin.databinding.FragmentNewsPopularBinding
-import com.example.diplomayin.fragments.allNews.AllNewsViewModel
+import com.example.diplomayin.databinding.FragmentNewsDevelopersBinding
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PopularNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
+class DevelopersNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>() {
 
-    private val viewModel: PopularNewsViewModel by viewModel()
-    override val binding: FragmentNewsPopularBinding by viewBinding()
-
+    override val binding: FragmentNewsDevelopersBinding by viewBinding()
+    private val viewModel: DevelopersNewsViewModel by viewModel()
     private var newsAdapter = NewsListAdapter()
 
     override fun onView() {

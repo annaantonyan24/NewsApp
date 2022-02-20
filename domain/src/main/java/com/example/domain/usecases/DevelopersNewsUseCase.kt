@@ -5,18 +5,17 @@ import com.example.core.CallException
 import com.example.core.dispatcher.CoroutineDispatcherProvider
 import com.example.data.repository.NewsRepository
 import com.example.data.util.Constants
-import com.example.domain.interactors.NewsInteractor
-import com.example.domain.interactors.PopularNewsInteractor
+import com.example.domain.interactors.DevelopersNewsInteractor
 import com.example.domain.model.Data
 import com.example.domain.utils.toNews
 import kotlinx.coroutines.withContext
 
-class PopularNewsUseCase(
+class DevelopersNewsUseCase(
     private val newsRepository: NewsRepository,
     private val dispatcher: CoroutineDispatcherProvider
-) : PopularNewsInteractor {
+) : DevelopersNewsInteractor {
     override suspend fun invoke(): ActionResult<List<Data>> = withContext(dispatcher.io) {
-        when (val apiData = newsRepository.getPopularNewsData()) {
+        when (val apiData = newsRepository.getDevelopersNewsData()) {
             is ActionResult.Success -> {
                 apiData.data?.let { it ->
                     ActionResult.Success(it.articles.map { it.toNews() })

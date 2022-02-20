@@ -1,10 +1,13 @@
 package com.example.diplomayin.di
 
-import com.example.diplomayin.fragments.allNews.AllNewsFragment
 import com.example.diplomayin.fragments.allNews.AllNewsViewModel
+import com.example.diplomayin.fragments.developersNews.DevelopersNewsViewModel
+import com.example.diplomayin.fragments.popularNews.PopularNewsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    factory { AllNewsViewModel(get()) }
+    viewModel { AllNewsViewModel(get()) }
+    viewModel { PopularNewsViewModel(get()) }
+    viewModel { DevelopersNewsViewModel(get()) }
 }

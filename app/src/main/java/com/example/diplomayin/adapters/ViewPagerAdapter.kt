@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.diplomayin.fragments.allNews.AllNewsFragment
-import com.example.diplomayin.fragments.NewsDevelopersFragment
+import com.example.diplomayin.fragments.developersNews.DevelopersNewsFragment
 import com.example.diplomayin.fragments.popularNews.PopularNewsFragment
 
 private const val NUM_TABS = 3
@@ -20,6 +20,6 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
             0 -> return AllNewsFragment()
             1 -> return PopularNewsFragment()
         }
-        return NewsDevelopersFragment()
+        return DevelopersNewsFragment()
     }
 }
