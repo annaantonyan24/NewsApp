@@ -28,6 +28,12 @@ class DevelopersNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>()
     override fun onEach() {
         onEach(viewModel.list){
             newsAdapter.differ.submitList(it)
+
+            binding.swipeRefreshLayout.setOnRefreshListener {
+                newsAdapter.differ.submitList(it)
+                newsAdapter.notifyDataSetChanged()
+                binding.swipeRefreshLayout.isRefreshing = false
+            }
         }
     }
 

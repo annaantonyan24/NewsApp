@@ -36,7 +36,6 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
             Glide.with(binding.root)
                 .load(article.urlToImage)
-                .placeholder(R.drawable.news_placeholder)
                 .centerCrop()
                 .into(binding.ivNews)
         }

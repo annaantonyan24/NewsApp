@@ -1,5 +1,6 @@
 package com.example.diplomayin.fragments.popularNews
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,9 +35,16 @@ class PopularNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onEach() {
         onEach(viewModel.list){
             newsAdapter.differ.submitList(it)
+
+            binding.swipeRefreshLayout.setOnRefreshListener {
+                newsAdapter.differ.submitList(it)
+                newsAdapter.notifyDataSetChanged()
+                binding.swipeRefreshLayout.isRefreshing = false
+            }
         }
     }
 
