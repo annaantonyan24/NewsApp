@@ -13,7 +13,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 class NewsFragment : Fragment() {
 
     private lateinit var binding: FragmentNewsBinding
-    private val adapter by lazy { ViewPagerAdapter(childFragmentManager, lifecycle) }
 
     private val fragmentsArray = arrayOf(
         "All News",
@@ -30,7 +29,7 @@ class NewsFragment : Fragment() {
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
 
-        viewPager.adapter = adapter
+        viewPager.adapter = ViewPagerAdapter(childFragmentManager, lifecycle)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = fragmentsArray[position]

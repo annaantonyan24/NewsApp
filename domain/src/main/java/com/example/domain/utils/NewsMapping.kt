@@ -9,5 +9,7 @@ fun Article.toNews(): Data = Data(
     description,
     urlToImage,
     publishedAt,
-    url
+    url,
+    content
 )
+

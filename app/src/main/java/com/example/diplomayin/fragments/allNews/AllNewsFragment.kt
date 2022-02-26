@@ -1,24 +1,35 @@
 package com.example.diplomayin.fragments.allNews
 
 import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.model.Article
-import com.example.data.model.Source
 import com.example.diplomayin.FragmentBaseMVVM
+import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
+import com.example.diplomayin.fragments.newsDetails.NewsDetailsFragment
+import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 
 
 class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
 
     private val viewModel: AllNewsViewModel by viewModel()
     override val binding: FragmentAllNewsBinding by viewBinding()
+    private val bundle = Bundle()
 
-    private var newsAdapter = NewsListAdapter()
+    private var newsAdapter = NewsListAdapter {
+
+        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
+
+        view?.let { view ->
+            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+        }
+
+    }
+
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onView() {
@@ -35,7 +46,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onEach() {
-        onEach(viewModel.list){
+        onEach(viewModel.list) {
             newsAdapter.differ.submitList(it)
 
             binding.swipeRefreshLayout.setOnRefreshListener {

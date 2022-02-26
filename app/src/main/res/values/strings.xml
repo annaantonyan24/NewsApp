@@ -7,4 +7,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="content_image">contentImage</string>
     <string name="published">Published: %1$s </string>
+    <string name="url"> <u> http://www.cnnphilippines.com/news/2022/2/26/DOH-COVID-19-cases-February-26-2022.html </u> </string>
+
 </resources>

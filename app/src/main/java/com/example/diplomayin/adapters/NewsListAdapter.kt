@@ -11,7 +11,8 @@ import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
-class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsListAdapter(var itemClickCallBack: (Data) -> Unit) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
 
@@ -38,6 +39,10 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .load(article.urlToImage)
                 .centerCrop()
                 .into(binding.ivNews)
+
+            itemView.setOnClickListener {
+                itemClickCallBack(article)
+            }
         }
 
     }
@@ -56,12 +61,16 @@ class NewsListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 .load(article.urlToImage)
                 .centerCrop()
                 .into(binding.ivNews)
+
+            itemView.setOnClickListener {
+                itemClickCallBack(article)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if (viewType == VIEW_TYPE_ONE){
+        if (viewType == VIEW_TYPE_ONE) {
             return FirstItemViewHolder(
                 ItemNewsFirstBinding.inflate(
                     LayoutInflater.from(parent.context),
