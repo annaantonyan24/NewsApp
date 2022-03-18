@@ -16,7 +16,11 @@
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowBackground">@color/background_Color</item>
+    </style>
 
+    <style name="WallSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="iconifiedByDefault">false</item>
+        <item name="colorControlActivated">@color/unchecked_icon</item>
     </style>
 
 </resources>
