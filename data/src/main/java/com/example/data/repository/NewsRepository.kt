@@ -8,4 +8,5 @@ interface NewsRepository {
     suspend fun getAllNewsData():ActionResult<News>
     suspend fun getPopularNewsData():ActionResult<News>
     suspend fun getDevelopersNewsData():ActionResult<News>
+    suspend fun getSearchedNews(title: String):ActionResult<News>
 }

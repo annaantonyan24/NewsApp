@@ -23,4 +23,9 @@ class NewsRepositoryImpl(private val newsApiService: NewsApiService) : NewsRepos
             analyzeResponse(newsApiService.getDevelopersNews())
         })
 
+    override suspend fun getSearchedNews(title: String): ActionResult<News> =
+        makeApiCall({
+            analyzeResponse(newsApiService.getSearchedNews(title))
+        })
+
 }

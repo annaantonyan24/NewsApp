@@ -24,25 +24,6 @@ class AdapterSearch :
 
     val differ = AsyncListDiffer(this, differCallBack)
 
-    inner class FirstItemViewHolder(private val binding: ItemNewsFirstBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(article: Data) {
-            with(binding) {
-                tvAuthor.text = article.author
-                tvDescription.text = article.description
-                tvTime.text = article.publishedAt
-                tvTitle.text = article.title
-            }
-            Glide.with(binding.root)
-                .load(article.urlToImage)
-                .centerCrop()
-                .into(binding.ivNews)
-
-        }
-
-    }
-
     inner class ViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
