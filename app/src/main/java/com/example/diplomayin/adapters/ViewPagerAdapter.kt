@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.diplomayin.fragments.allNews.AllNewsFragment
-import com.example.diplomayin.fragments.developersNews.DevelopersNewsFragment
-import com.example.diplomayin.fragments.popularNews.PopularNewsFragment
+import com.example.diplomayin.fragments.developersNews.TechnologyNewsFragment
+import com.example.diplomayin.fragments.popularNews.HealthNewsFragment
 
 private const val NUM_TABS = 3
 
@@ -18,8 +18,8 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     override fun createFragment(position: Int): Fragment {
         when (position) {
             0 -> return AllNewsFragment()
-            1 -> return PopularNewsFragment()
+            1 -> return HealthNewsFragment()
         }
-        return DevelopersNewsFragment()
+        return TechnologyNewsFragment()
     }
 }

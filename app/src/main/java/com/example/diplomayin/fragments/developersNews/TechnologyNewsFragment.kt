@@ -1,36 +1,29 @@
-package com.example.diplomayin.fragments.popularNews
+package com.example.diplomayin.fragments.developersNews
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.model.Article
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
-import com.example.diplomayin.databinding.FragmentAllNewsBinding
-import com.example.diplomayin.databinding.FragmentNewsPopularBinding
-import com.example.diplomayin.fragments.allNews.AllNewsViewModel
+import com.example.diplomayin.databinding.FragmentNewsDevelopersBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PopularNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
+class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>() {
 
-    private val viewModel: PopularNewsViewModel by viewModel()
-    override val binding: FragmentNewsPopularBinding by viewBinding()
+    override val binding: FragmentNewsDevelopersBinding by viewBinding()
+    private val viewModel: TechnologyNewsViewModel by viewModel()
     private val bundle = Bundle()
 
-    private var newsAdapter = NewsListAdapter{
+    private var newsAdapter = NewsListAdapter {
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
 
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
-        }    }
+        }
+    }
 
     override fun onView() {
         with(binding) {
@@ -44,9 +37,8 @@ class PopularNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onEach() {
-        onEach(viewModel.list){
+        onEach(viewModel.list) {
             newsAdapter.differ.submitList(it)
 
             binding.swipeRefreshLayout.setOnRefreshListener {

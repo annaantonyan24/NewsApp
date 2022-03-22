@@ -19,18 +19,18 @@ interface NewsApiService {
 
     // Popular News
     @GET("top-headlines")
-    suspend fun getPopularNews(
-        @Query ("sortBy") sortBy: String = "popularity",
+    suspend fun getHealthNews(
         @Query("language") language: String = "en",
-        @Query("apiKey") key: String = API_KEY
+        @Query("apiKey") key: String = API_KEY,
+        @Query("category") category: String = "health",
     ): Response<News>
 
     // Developers News
-    @GET("everything")
-    suspend fun getDevelopersNews(
-        @Query("q") q: String = "developers",
+    @GET("top-headlines")
+    suspend fun getTechnologyNews(
         @Query("language") language: String = "en",
-        @Query("apiKey") key: String = API_KEY
+        @Query("apiKey") key: String = API_KEY,
+        @Query("category") category: String = "technology",
     ): Response<News>
 
     // Search for News

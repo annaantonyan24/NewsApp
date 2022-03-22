@@ -13,14 +13,14 @@ class NewsRepositoryImpl(private val newsApiService: NewsApiService) : NewsRepos
             analyzeResponse(newsApiService.getAllNews())
         })
 
-    override suspend fun getPopularNewsData(): ActionResult<News> =
+    override suspend fun getHealthNewsData(): ActionResult<News> =
         makeApiCall({
-            analyzeResponse(newsApiService.getPopularNews())
+            analyzeResponse(newsApiService.getHealthNews())
         })
 
-    override suspend fun getDevelopersNewsData(): ActionResult<News> =
+    override suspend fun getTechnologyNewsData(): ActionResult<News> =
         makeApiCall({
-            analyzeResponse(newsApiService.getDevelopersNews())
+            analyzeResponse(newsApiService.getTechnologyNews())
         })
 
     override suspend fun getSearchedNews(title: String): ActionResult<News> =
