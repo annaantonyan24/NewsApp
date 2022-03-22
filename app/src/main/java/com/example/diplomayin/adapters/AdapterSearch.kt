@@ -10,7 +10,7 @@ import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
-class AdapterSearch :
+class AdapterSearch(var itemClickCallBack: (Data) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
@@ -39,6 +39,9 @@ class AdapterSearch :
                 .centerCrop()
                 .into(binding.ivNews)
 
+            itemView.setOnClickListener {
+                itemClickCallBack(article)
+            }
         }
     }
 

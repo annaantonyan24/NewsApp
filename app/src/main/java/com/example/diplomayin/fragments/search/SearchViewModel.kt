@@ -16,7 +16,7 @@ class SearchViewModel(private val newsInteractor: SearchedNewsInteractor) : View
 
     private val _errorNullData = MutableStateFlow<String?>(null)
 
-    private fun getList(title: String) {
+    fun getList(title: String) {
         viewModelScope.launch {
             when (val result = newsInteractor(title)) {
                 is ActionResult.Success -> {
