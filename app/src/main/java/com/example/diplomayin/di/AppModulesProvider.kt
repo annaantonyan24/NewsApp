@@ -1,8 +1,8 @@
 package com.example.diplomayin.di
 
 import com.example.diplomayin.fragments.allNews.AllNewsViewModel
-import com.example.diplomayin.fragments.developersNews.TechnologyNewsViewModel
-import com.example.diplomayin.fragments.popularNews.HealthNewsViewModel
+import com.example.diplomayin.fragments.technologyNews.TechnologyNewsViewModel
+import com.example.diplomayin.fragments.healthNews.HealthNewsViewModel
 import com.example.diplomayin.fragments.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

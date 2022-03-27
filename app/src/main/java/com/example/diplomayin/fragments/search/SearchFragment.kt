@@ -19,14 +19,15 @@ class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
     override val binding: FragmentSearchBinding by viewBinding()
     private val bundle = Bundle()
 
-    private var adapterNews = AdapterSearch {
+    private var adapterNews = AdapterSearch({
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
 
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
-    }
+    }) {
 
+    }
 
     override fun onView() {
 

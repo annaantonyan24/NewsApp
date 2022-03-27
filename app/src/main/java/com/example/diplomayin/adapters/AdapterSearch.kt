@@ -1,16 +1,19 @@
 package com.example.diplomayin.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
-class AdapterSearch(var itemClickCallBack: (Data) -> Unit) :
+class AdapterSearch(var itemClickCallBack: (Data) -> Unit,var itemSaveCallBack: (Data) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
@@ -41,6 +44,9 @@ class AdapterSearch(var itemClickCallBack: (Data) -> Unit) :
 
             itemView.setOnClickListener {
                 itemClickCallBack(article)
+            }
+
+            binding.btnSave.setOnClickListener {
             }
         }
     }

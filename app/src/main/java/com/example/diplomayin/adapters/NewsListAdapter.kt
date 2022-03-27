@@ -1,7 +1,12 @@
 package com.example.diplomayin.adapters
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +16,10 @@ import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
-class NewsListAdapter(var itemClickCallBack: (Data) -> Unit) :
+class NewsListAdapter(
+    var itemClickCallBack: (Data) -> Unit,
+    var itemSaveCallBack: (Data) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
@@ -43,6 +51,7 @@ class NewsListAdapter(var itemClickCallBack: (Data) -> Unit) :
             itemView.setOnClickListener {
                 itemClickCallBack(article)
             }
+
         }
 
     }
@@ -108,7 +117,6 @@ class NewsListAdapter(var itemClickCallBack: (Data) -> Unit) :
         const val VIEW_TYPE_ONE = 0
         const val VIEW_TYPE_TWO = 1
     }
-
 
 }
 

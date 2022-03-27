@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.diplomayin.fragments.allNews.AllNewsFragment
-import com.example.diplomayin.fragments.developersNews.TechnologyNewsFragment
-import com.example.diplomayin.fragments.popularNews.HealthNewsFragment
+import com.example.diplomayin.fragments.technologyNews.TechnologyNewsFragment
+import com.example.diplomayin.fragments.healthNews.HealthNewsFragment
 
 private const val NUM_TABS = 3
 

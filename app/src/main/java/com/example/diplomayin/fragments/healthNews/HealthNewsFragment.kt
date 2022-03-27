@@ -1,4 +1,4 @@
-package com.example.diplomayin.fragments.popularNews
+package com.example.diplomayin.fragments.healthNews
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -18,12 +18,16 @@ class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
     override val binding: FragmentNewsPopularBinding by viewBinding()
     private val bundle = Bundle()
 
-    private var newsAdapter = NewsListAdapter{
-        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
+    private var newsAdapter = NewsListAdapter({ data ->
+            bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
 
-        view?.let { view ->
-            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
-        }    }
+            view?.let { view ->
+                Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            }
+        }, {
+
+        })
+
 
     override fun onView() {
         with(binding) {

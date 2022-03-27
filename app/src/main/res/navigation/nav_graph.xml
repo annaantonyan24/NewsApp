@@ -36,10 +36,10 @@
             app:destination="@id/navigation_details" />
     </fragment>
     <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.example.diplomayin.fragments.FavoritesFragment"
-        android:label="Favorites"
-        tools:layout="@layout/fragment_favorites" />
+        android:id="@+id/savedFragment"
+        android:name="com.example.diplomayin.fragments.SavedFragment"
+        android:label="Saved"
+        tools:layout="@layout/fragment_saved" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.diplomayin.fragments.ProfileFragment"

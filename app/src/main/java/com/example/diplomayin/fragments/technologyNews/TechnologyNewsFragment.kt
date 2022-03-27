@@ -1,5 +1,6 @@
-package com.example.diplomayin.fragments.developersNews
+package com.example.diplomayin.fragments.technologyNews
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +18,15 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>()
     private val viewModel: TechnologyNewsViewModel by viewModel()
     private val bundle = Bundle()
 
-    private var newsAdapter = NewsListAdapter {
-        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
+    private var newsAdapter = NewsListAdapter({ data ->
+            bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
 
-        view?.let { view ->
-            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
-        }
-    }
+            view?.let { view ->
+                Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            }
+        }, {
+
+        })
 
     override fun onView() {
         with(binding) {
@@ -37,6 +40,7 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>()
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onEach() {
         onEach(viewModel.list) {
             newsAdapter.differ.submitList(it)

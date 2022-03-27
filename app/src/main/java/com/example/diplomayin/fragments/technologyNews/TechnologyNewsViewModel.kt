@@ -1,15 +1,15 @@
-package com.example.diplomayin.fragments.popularNews
+package com.example.diplomayin.fragments.technologyNews
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.ActionResult
-import com.example.domain.interactors.HealthNewsInteractor
+import com.example.domain.interactors.TechnologyNewsInteractor
 import com.example.domain.model.Data
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-class HealthNewsViewModel(private val healthNewsInteractor: HealthNewsInteractor) : ViewModel() {
+class TechnologyNewsViewModel(private val newsInteractor: TechnologyNewsInteractor) : ViewModel() {
 
     private val _list: MutableStateFlow<List<Data>?> by lazy { MutableStateFlow(null) }
     val list = _list.asSharedFlow()
@@ -22,7 +22,7 @@ class HealthNewsViewModel(private val healthNewsInteractor: HealthNewsInteractor
 
     private fun getList() {
         viewModelScope.launch {
-            when (val result = healthNewsInteractor()) {
+            when (val result = newsInteractor()) {
                 is ActionResult.Success -> {
                     _list.emit(result.data)
                 }
@@ -32,4 +32,5 @@ class HealthNewsViewModel(private val healthNewsInteractor: HealthNewsInteractor
             }
         }
     }
+
 }

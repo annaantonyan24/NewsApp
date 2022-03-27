@@ -10,9 +10,9 @@
         android:icon="@drawable/ic_baseline_search"
         android:title="@string/search" />
     <item
-        android:id="@+id/favoritesFragment"
-        android:icon="@drawable/ic_outline_favorite"
-        android:title="@string/favorites" />
+        android:id="@+id/savedFragment"
+        android:icon="@drawable/ic_save"
+        android:title="@string/saved" />
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"

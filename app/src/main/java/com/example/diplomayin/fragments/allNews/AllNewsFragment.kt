@@ -2,13 +2,13 @@ package com.example.diplomayin.fragments.allNews
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
-import com.example.diplomayin.fragments.newsDetails.NewsDetailsFragment
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,16 +20,16 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
     override val binding: FragmentAllNewsBinding by viewBinding()
     private val bundle = Bundle()
 
-    private var newsAdapter = NewsListAdapter {
+    private var newsAdapter = NewsListAdapter({
 
-        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
+            bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
 
-        view?.let { view ->
-            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            view?.let { view ->
+                Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            }
+        }) {
+
         }
-
-    }
-
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onView() {

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FavoritesFragment">
+    tools:context=".fragments.SavedFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="@string/favorites"
+        android:text="@string/saved"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
