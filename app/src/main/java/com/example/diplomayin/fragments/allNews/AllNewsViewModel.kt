@@ -3,6 +3,7 @@ package com.example.diplomayin.fragments.allNews
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.ActionResult
+import com.example.diplomayin.activity.mainActivity.SharedViewModel
 import com.example.domain.interactors.NewsInteractor
 import com.example.domain.model.Data
 import kotlinx.coroutines.flow.MutableStateFlow

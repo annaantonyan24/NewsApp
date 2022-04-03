@@ -2,7 +2,7 @@ package com.example.data.repository
 
 import com.example.core.ActionResult
 import com.example.data.dataservice.NewsApiService
-import com.example.data.model.News
+import com.example.data.model.model.response.News
 import com.example.data.util.analyzeResponse
 import com.example.data.util.makeApiCall
 

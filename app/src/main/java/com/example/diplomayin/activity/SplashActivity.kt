@@ -11,7 +11,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.AppCompatActivity
-import com.example.diplomayin.MainActivity
+import com.example.diplomayin.activity.mainActivity.MainActivity
 import com.example.diplomayin.databinding.ActivitySplashBinding
 
 

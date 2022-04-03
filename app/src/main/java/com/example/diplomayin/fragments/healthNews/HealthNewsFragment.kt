@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
-import com.example.diplomayin.databinding.FragmentNewsPopularBinding
+import com.example.diplomayin.databinding.FragmentNewsHealthBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsPopularBinding>() {
+class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsHealthBinding>() {
 
     private val viewModel: HealthNewsViewModel by viewModel()
-    override val binding: FragmentNewsPopularBinding by viewBinding()
+    override val binding: FragmentNewsHealthBinding by viewBinding()
     private val bundle = Bundle()
 
     private var newsAdapter = NewsListAdapter({ data ->

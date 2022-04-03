@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.diplomayin.fragments.NewsFragment"
+        android:name="com.example.diplomayin.fragments.newsFragment.NewsFragment"
         android:label="News"
         tools:layout="@layout/fragment_news">
 
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedFragment"
-        android:name="com.example.diplomayin.fragments.SavedFragment"
+        android:name="com.example.diplomayin.fragments.savedFragment.SavedFragment"
         android:label="Saved"
         tools:layout="@layout/fragment_saved" />
     <fragment

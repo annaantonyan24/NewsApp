@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.adapters.NewsListAdapter
-import com.example.diplomayin.databinding.FragmentNewsDevelopersBinding
+import com.example.diplomayin.databinding.FragmentNewsTechnologyBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsDevelopersBinding>() {
+class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>() {
 
-    override val binding: FragmentNewsDevelopersBinding by viewBinding()
+    override val binding: FragmentNewsTechnologyBinding by viewBinding()
     private val viewModel: TechnologyNewsViewModel by viewModel()
     private val bundle = Bundle()
 

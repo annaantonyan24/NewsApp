@@ -52,6 +52,10 @@ class NewsListAdapter(
                 itemClickCallBack(article)
             }
 
+            binding.btnSave.setOnClickListener {
+                itemSaveCallBack(article)
+            }
+
         }
 
     }

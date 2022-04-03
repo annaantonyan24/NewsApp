@@ -1,5 +1,6 @@
 package com.example.diplomayin.di
 
+import com.example.diplomayin.activity.mainActivity.SharedViewModel
 import com.example.diplomayin.fragments.allNews.AllNewsViewModel
 import com.example.diplomayin.fragments.technologyNews.TechnologyNewsViewModel
 import com.example.diplomayin.fragments.healthNews.HealthNewsViewModel
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel { HealthNewsViewModel(get()) }
     viewModel { TechnologyNewsViewModel(get()) }
     viewModel { SearchViewModel(get()) }
+    viewModel { SharedViewModel(get()) }
 }

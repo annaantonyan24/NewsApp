@@ -4,17 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SavedFragment">
+    tools:context=".fragments.savedFragment.SavedFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="@string/saved"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,8 @@
 package com.example.data.dataservice
 
-import com.example.data.model.News
+import com.example.data.model.model.response.News
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 const val API_KEY = "b26b52df3c3a497d84cf0ff59b0537de"

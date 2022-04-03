@@ -1,4 +1,4 @@
-package com.example.data.model
+package com.example.data.model.model.response
 
 data class Article(
     val author: String?,

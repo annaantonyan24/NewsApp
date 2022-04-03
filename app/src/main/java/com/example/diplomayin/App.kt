@@ -2,6 +2,7 @@ package com.example.diplomayin
 
 import android.app.Application
 import com.example.data.di.apiModule
+import com.example.data.di.newsDB
 import com.example.data.di.repositoryModule
 import com.example.diplomayin.di.viewModelModule
 import com.example.domain.di.interactorModule
@@ -23,6 +24,7 @@ class App: Application() {
         viewModelModule,
         apiModule,
         repositoryModule,
-        interactorModule
+        interactorModule,
+        newsDB
     )
 }

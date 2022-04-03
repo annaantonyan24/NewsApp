@@ -1,4 +1,4 @@
-package com.example.diplomayin.fragments
+package com.example.diplomayin.fragments.newsFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
