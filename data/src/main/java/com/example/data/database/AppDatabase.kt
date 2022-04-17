@@ -2,13 +2,15 @@ package com.example.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.data.model.model.room.MyNewsDataModel
 import com.example.data.model.model.room.NewsDataModel
 
 @Database(
-    entities = [NewsDataModel::class],
-    version = 2,
+    entities = [NewsDataModel::class, MyNewsDataModel::class],
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase() {
     abstract val newsDao: NewsDao
+    abstract val myNewsDao: MyNewsDao
 }

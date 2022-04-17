@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "newsTable")
 data class NewsDataModel(
     @PrimaryKey(autoGenerate = true)
-    var userID: Int = 0,
+    var newsID: Int = 0,
     @ColumnInfo(name = "author")
     val author : String?,
     @ColumnInfo(name = "title")

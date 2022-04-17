@@ -11,5 +11,10 @@
     <color name="checked_icon">#ab000d</color>
     <color name="unchecked_icon">#FD8974</color>
     <color name="background_Color">#E6DDDD</color>
+    <color name="background_color_iv">#C4E6DDDD</color>
+    <color name="news_image_background">#E1E1E1</color>
     <color name="tab_layout_unchecked">#E1E6DDDD</color>
+    <color name="grey_900">#212121</color>
+    <color name="blue_grey_700">#37474f</color>
+
 </resources>

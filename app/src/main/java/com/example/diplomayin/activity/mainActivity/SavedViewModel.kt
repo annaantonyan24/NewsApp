@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class SharedViewModel(
+class SavedViewModel(
     private val getSavedNewsInteractor: GetSavedNewsInteractor,
     private val insertNewsInteractor: InsertNewsInteractor,
     private val deleteNewsInteractor: DeleteNewsInteractor,
@@ -26,7 +26,7 @@ class SharedViewModel(
 
     private fun savedNews() {
         viewModelScope.launch {
-            val result = getSavedNewsInteractor.getSavedNews()
+            val result = getSavedNewsInteractor.getSavedNews().reversed()
             _getSavedNews.emit(result)
         }
     }

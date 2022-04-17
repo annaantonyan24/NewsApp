@@ -1,9 +1,11 @@
 package com.example.data.repository
 
 import com.example.core.ActionResult
+import com.example.data.database.MyNewsDao
 import com.example.data.database.NewsDao
 import com.example.data.dataservice.NewsApiService
 import com.example.data.model.model.response.News
+import com.example.data.model.model.room.MyNewsDataModel
 import com.example.data.model.model.room.NewsDataModel
 import com.example.data.util.analyzeResponse
 import com.example.data.util.makeApiCall
@@ -11,7 +13,8 @@ import kotlinx.coroutines.flow.Flow
 
 class NewsRepositoryImpl(
     private val newsApiService: NewsApiService,
-    private val newsDao: NewsDao
+    private val newsDao: NewsDao,
+    private val myNewsDao: MyNewsDao
 ) : NewsRepository {
 
     override suspend fun getAllNewsData(): ActionResult<News> =
@@ -37,5 +40,9 @@ class NewsRepositoryImpl(
     override suspend fun getSavedNews(): List<NewsDataModel> = newsDao.getAllNews()
     override suspend fun insertNews(news: NewsDataModel) = newsDao.insertData(news)
     override suspend fun deleteNews(news: NewsDataModel) = newsDao.deleteData(news)
+
+    override suspend fun getMyNews(): List<MyNewsDataModel> = myNewsDao.getMyNews()
+    override suspend fun insertMyNews(news: MyNewsDataModel) = myNewsDao.insertMyNews(news)
+    override suspend fun deleteMyNews(news: MyNewsDataModel) = myNewsDao.deleteMyNews(news)
 
 }

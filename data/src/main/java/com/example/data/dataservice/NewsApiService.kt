@@ -13,6 +13,7 @@ interface NewsApiService {
     @GET("top-headlines")
     suspend fun getAllNews(
         @Query("language") language: String = "en",
+        @Query("pageSize") pageSize: Int = 40,
         @Query("apiKey") key: String = API_KEY
     ): Response<News>
 
@@ -20,15 +21,17 @@ interface NewsApiService {
     @GET("top-headlines")
     suspend fun getHealthNews(
         @Query("language") language: String = "en",
+        @Query("pageSize") pageSize: Int = 40,
         @Query("apiKey") key: String = API_KEY,
         @Query("category") category: String = "health",
     ): Response<News>
 
-    // Developers News
+    // Technology News
     @GET("top-headlines")
     suspend fun getTechnologyNews(
         @Query("language") language: String = "en",
         @Query("apiKey") key: String = API_KEY,
+        @Query("pageSize") pageSize: Int = 40,
         @Query("category") category: String = "technology",
     ): Response<News>
 

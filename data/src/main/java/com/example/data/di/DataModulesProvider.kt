@@ -3,6 +3,7 @@ package com.example.data.di
 import android.app.Application
 import androidx.room.Room
 import com.example.data.database.AppDatabase
+import com.example.data.database.MyNewsDao
 import com.example.data.database.NewsDao
 import com.example.data.dataservice.NewsApiService
 import com.example.data.repository.NewsRepository
@@ -43,7 +44,7 @@ val apiModule = module {
 
 val repositoryModule = module {
     single<NewsRepository> {
-        NewsRepositoryImpl(get(),get())
+        NewsRepositoryImpl(get(),get(),get())
     }
 }
 
@@ -57,6 +58,11 @@ val newsDB = module {
     fun provideDao(dataBase: AppDatabase): NewsDao {
         return dataBase.newsDao
     }
+
+    fun provideMyDao(dataBase: AppDatabase): MyNewsDao {
+        return dataBase.myNewsDao
+    }
     single { provideDataBase(androidApplication()) }
     single { provideDao(get()) }
+    single { provideMyDao(get()) }
 }

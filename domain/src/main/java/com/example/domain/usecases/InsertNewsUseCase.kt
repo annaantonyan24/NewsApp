@@ -16,5 +16,4 @@ class InsertNewsUseCase(
     override suspend fun insertNews(news: Data) = withContext(dispatcher.io) {
        newsRepo.insertNews(news.toNewsModel())
     }
-
 }

@@ -1,32 +1,31 @@
-package com.example.diplomayin.fragments.savedFragment
+package com.example.diplomayin.fragments.myNews
 
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
-import com.example.diplomayin.activity.mainActivity.SavedViewModel
-import com.example.diplomayin.adapters.AdapterDB
-import com.example.diplomayin.databinding.FragmentSavedBinding
+import com.example.diplomayin.adapters.AdapterMyNews
+import com.example.diplomayin.adapters.NewsListAdapter
+import com.example.diplomayin.databinding.FragmentMyNewsBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
-
-    override val binding : FragmentSavedBinding by viewBinding()
-    private val savedViewModel: SavedViewModel by viewModel()
+class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
+    private val viewModel: MyNewsViewModel by viewModel()
+    override val binding: FragmentMyNewsBinding by viewBinding()
     private val bundle = Bundle()
 
-    private var adapterNews = AdapterDB({
-        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
+    private var newsAdapter = AdapterMyNews({ data ->
+        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
 
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
-    }) {
+    }, {
 
-    }
+    })
 
     override fun onView() {
 
@@ -35,7 +34,7 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
                 context?.let {
                     layoutManager = LinearLayoutManager(it)
                     setHasFixedSize(true)
-                    adapter = adapterNews
+                    adapter = newsAdapter
                 }
             }
 
@@ -43,8 +42,8 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
     }
 
     override fun onEach() {
-        onEach(savedViewModel.getSavedNews) {
-            adapterNews.differ.submitList(it)
+        onEach(viewModel.getMyNews) {
+            newsAdapter.differ.submitList(it)
         }
     }
 

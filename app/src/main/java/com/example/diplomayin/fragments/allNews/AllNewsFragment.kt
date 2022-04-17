@@ -6,7 +6,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
-import com.example.diplomayin.activity.mainActivity.SharedViewModel
+import com.example.diplomayin.activity.mainActivity.SavedViewModel
 import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
 import com.example.diplomayin.utils.NewsConstants
@@ -21,7 +21,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
     private val viewModel: AllNewsViewModel by viewModel()
     override val binding: FragmentAllNewsBinding by viewBinding()
     private val bundle = Bundle()
-    private val sharedViewModel: SharedViewModel by sharedViewModel()
+    private val savedViewModel: SavedViewModel by sharedViewModel()
 
     private var newsAdapter = NewsListAdapter({
 
@@ -31,7 +31,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
     }, {
-        sharedViewModel.insertNews(
+        savedViewModel.insertNews(
             Data(
                 author = it.author,
                 title = it.title,
@@ -44,7 +44,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
             )
         )
     }) {
-        sharedViewModel.deleteNews(
+        savedViewModel.deleteNews(
             Data(
                 author = it.author,
                 title = it.title,

@@ -64,6 +64,7 @@ dependencies {
 
     implementation (libraries.glide)
     annotationProcessor (libraries.glideCompiler)
-
     implementation (androidXLibraries.swipeRefresh)
+    implementation(libraries.dexter)
+
 }

@@ -3,10 +3,27 @@
     <string name="news">News</string>
     <string name="search">Search</string>
     <string name="saved">Saved</string>
-    <string name="my_profile">My Profile</string>
+    <string name="my_profile">My News</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="content_image">contentImage</string>
+    <string name="title_select_image_action">Select Image Action</string>
     <string name="published">Published: %1$s </string>
     <string name="url"> <u> http://www.cnnphilippines.com/news/2022/2/26/DOH-COVID-19-cases-February-26-2022.html </u> </string>
+    <string name="lbl_camera">Camera</string>
+    <string name="lbl_gallery">Gallery</string>
+    <string name="add_news">Add News</string>
+    <string name="lbl_title">Title</string>
+    <string name="lbl_description">Description</string>
+    <string name="lbl_category">Category</string>
+    <string name="lbl_ingredients">Ingredients</string>
+    <string name="lbl_time">Cooking Time in Minutes</string>
+    <string name="lbl_content">Content</string>
+    <string name="permission_not_available_message">It looks like you have turned off permissions required for this feature. It can be enabled under Application Settings</string>
+
+    <string name="err_msg_select_img">Select News image.</string>
+    <string name="err_msg_enter_news_title">Enter news title.</string>
+    <string name="err_msg_enter_news_description">Enter news description.</string>
+    <string name="err_msg_select_news_category">Select news category.</string>
+    <string name="err_msg_enter_news_content">Enter news content.</string>
 
 </resources>
