@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.activity.mainActivity.SharedViewModel
+import com.example.diplomayin.adapters.AdapterDB
 import com.example.diplomayin.adapters.AdapterSearch
 import com.example.diplomayin.databinding.FragmentSavedBinding
 import com.example.diplomayin.databinding.FragmentSearchBinding
@@ -22,7 +23,7 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
     private val sharedViewModel: SharedViewModel by sharedViewModel()
     private val bundle = Bundle()
 
-    private var adapterNews = AdapterSearch({
+    private var adapterNews = AdapterDB({
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
 
         view?.let { view ->
@@ -46,10 +47,10 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
         }
     }
 
-//    override fun onEach() {
-//        onEach(sharedViewModel.getAllNews()) {
-//            adapterNews.differ.submitList(it)
-//        }
-//    }
+    override fun onEach() {
+        onEach(sharedViewModel.getSavedNews) {
+            adapterNews.differ.submitList(it)
+        }
+    }
 
 }

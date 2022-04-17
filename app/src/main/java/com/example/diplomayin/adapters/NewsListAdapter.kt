@@ -1,24 +1,19 @@
 package com.example.diplomayin.adapters
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
 class NewsListAdapter(
     var itemClickCallBack: (Data) -> Unit,
-    var itemSaveCallBack: (Data) -> Unit
+    var itemSaveCallBack: (Data) -> Unit,
+    var itemDeleteCallBack: (Data) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -53,7 +48,13 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                itemSaveCallBack(article)
+                if(!article.isSaved){
+                    article.isSaved = true
+                    itemSaveCallBack(article)
+                } else{
+                    article.isSaved = false
+                    itemDeleteCallBack(article)
+                }
             }
 
         }
@@ -77,6 +78,16 @@ class NewsListAdapter(
 
             itemView.setOnClickListener {
                 itemClickCallBack(article)
+            }
+
+            binding.btnSave.setOnClickListener {
+                if(!article.isSaved){
+                    article.isSaved = true
+                    itemSaveCallBack(article)
+                } else{
+                    article.isSaved = false
+                    itemDeleteCallBack(article)
+                }
             }
         }
     }

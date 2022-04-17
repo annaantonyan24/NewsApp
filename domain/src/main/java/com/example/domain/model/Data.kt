@@ -11,5 +11,6 @@ data class Data(
     val urlToImage: String?,
     val publishedAt: String?,
     val url: String?,
-    val content: String?
+    val content: String?,
+    var isSaved: Boolean = false
 ):Parcelable

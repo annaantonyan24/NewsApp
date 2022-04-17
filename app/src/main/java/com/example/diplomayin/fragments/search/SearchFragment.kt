@@ -10,7 +10,6 @@ import com.example.diplomayin.adapters.AdapterSearch
 import com.example.diplomayin.databinding.FragmentSearchBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
-import com.example.domain.model.Data
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {

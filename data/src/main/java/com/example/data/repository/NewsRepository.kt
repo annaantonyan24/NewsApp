@@ -2,6 +2,8 @@ package com.example.data.repository
 
 import com.example.core.ActionResult
 import com.example.data.model.model.response.News
+import com.example.data.model.model.room.NewsDataModel
+import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
 
@@ -9,4 +11,7 @@ interface NewsRepository {
     suspend fun getHealthNewsData():ActionResult<News>
     suspend fun getTechnologyNewsData():ActionResult<News>
     suspend fun getSearchedNews(title: String):ActionResult<News>
+    suspend fun getSavedNews(): List<NewsDataModel>
+    suspend fun insertNews(news:NewsDataModel)
+    suspend fun deleteNews(news:NewsDataModel)
 }

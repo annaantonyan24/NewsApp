@@ -9,7 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.domain.model.Data
 
-class AdapterSearch(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Data) -> Unit) :
+
+class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Data) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {

@@ -26,7 +26,9 @@ class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsHealthBinding>() {
             }
         }, {
 
-        })
+        }){
+
+    }
 
 
     override fun onView() {

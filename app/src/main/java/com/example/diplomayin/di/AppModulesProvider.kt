@@ -13,5 +13,5 @@ val viewModelModule = module {
     viewModel { HealthNewsViewModel(get()) }
     viewModel { TechnologyNewsViewModel(get()) }
     viewModel { SearchViewModel(get()) }
-    viewModel { SharedViewModel(get()) }
+    viewModel { SharedViewModel(get(),get(),get()) }
 }

@@ -19,14 +19,16 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
     private val bundle = Bundle()
 
     private var newsAdapter = NewsListAdapter({ data ->
-            bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
+        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
 
-            view?.let { view ->
-                Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
-            }
-        }, {
+        view?.let { view ->
+            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+        }
+    }, {
 
-        })
+    }) {
+
+    }
 
     override fun onView() {
         with(binding) {

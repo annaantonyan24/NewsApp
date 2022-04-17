@@ -21,5 +21,7 @@ data class NewsDataModel(
     @ColumnInfo(name = "url")
     val url: String?,
     @ColumnInfo(name = "content")
-    val content: String?
+    val content: String?,
+    @ColumnInfo(name = "isSaved")
+    var isSaved: Boolean
 )

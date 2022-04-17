@@ -2,14 +2,8 @@ package com.example.domain.di
 
 import com.example.core.dispatcher.BaseCoroutineDispatcherProvider
 import com.example.core.dispatcher.CoroutineDispatcherProvider
-import com.example.domain.interactors.TechnologyNewsInteractor
-import com.example.domain.interactors.NewsInteractor
-import com.example.domain.interactors.HealthNewsInteractor
-import com.example.domain.interactors.SearchedNewsInteractor
-import com.example.domain.usecases.TechnologyNewsUseCase
-import com.example.domain.usecases.NewsUseCase
-import com.example.domain.usecases.HealthNewsUseCase
-import com.example.domain.usecases.SearchedNewsUseCase
+import com.example.domain.interactors.*
+import com.example.domain.usecases.*
 import org.koin.dsl.module
 
 
@@ -19,4 +13,7 @@ val interactorModule = module {
     factory <HealthNewsInteractor> {HealthNewsUseCase(get(),get())}
     factory <TechnologyNewsInteractor> {TechnologyNewsUseCase(get(),get())}
     factory <SearchedNewsInteractor> { SearchedNewsUseCase(get(),get()) }
+    factory <GetSavedNewsInteractor> { GetSavedNewsUseCase(get(),get()) }
+    factory <InsertNewsInteractor> { InsertNewsUseCase(get(),get()) }
+    factory <DeleteNewsInteractor> { DeleteNewsUseCase(get(),get()) }
 }
