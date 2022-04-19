@@ -11,7 +11,8 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
     <ImageView
@@ -93,6 +94,7 @@ It is a long established fact that a reader will be distracted by the readable c
         app:layout_constraintTop_toBottomOf="@+id/layout_time_author" />
 
     <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -1,11 +1,15 @@
 package com.example.diplomayin.adapters
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
@@ -31,11 +35,17 @@ class NewsListAdapter(
     inner class FirstItemViewHolder(private val binding: ItemNewsFirstBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SimpleDateFormat")
+        @RequiresApi(Build.VERSION_CODES.O)
         fun bind(article: Data) {
+            val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
+            val date: String? = article.publishedAt?.take(10)
+            val publishedAt = "$time $date"
+
             with(binding) {
                 tvAuthor.text = article.author
                 tvDescription.text = article.description
-                tvTime.text = article.publishedAt
+                tvTime.text = itemView.context.getString(R.string.published_first, publishedAt)
                 tvTitle.text = article.title
             }
             Glide.with(binding.root)
@@ -48,10 +58,11 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                if(!article.isSaved){
+                if (!article.isSaved) {
                     article.isSaved = true
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
                     itemSaveCallBack(article)
-                } else{
+                } else {
                     article.isSaved = false
                     itemDeleteCallBack(article)
                 }
@@ -65,10 +76,14 @@ class NewsListAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Data) {
+            val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
+            val date: String? = article.publishedAt?.take(10)
+            val publishedAt = "$time $date"
+
             with(binding) {
                 tvAuthor.text = article.author
                 tvDescription.text = article.description
-                tvTime.text = article.publishedAt
+                tvTime.text = itemView.context.getString(R.string.published, publishedAt)
                 tvTitle.text = article.title
             }
             Glide.with(binding.root)
@@ -81,10 +96,11 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                if(!article.isSaved){
+                if (!article.isSaved) {
                     article.isSaved = true
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
                     itemSaveCallBack(article)
-                } else{
+                } else {
                     article.isSaved = false
                     itemDeleteCallBack(article)
                 }
@@ -112,6 +128,7 @@ class NewsListAdapter(
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val article = differ.currentList[position]

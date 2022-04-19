@@ -31,6 +31,7 @@ class MyNewsViewModel(
     fun deleteMyNews(news: MyNewsDataModel) {
         viewModelScope.launch(Dispatchers.IO) {
             deleteMyNewsInteractor.deleteMyNews(news)
+            myNews()
         }
     }
 }

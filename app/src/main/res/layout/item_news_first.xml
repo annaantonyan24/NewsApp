@@ -92,11 +92,11 @@
 
         </LinearLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_save"
             android:layout_width="22dp"
             android:layout_height="22dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="11dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/ic_not_saved"
             app:layout_constraintBottom_toBottomOf="parent"

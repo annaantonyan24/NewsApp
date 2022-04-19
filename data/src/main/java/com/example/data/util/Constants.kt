@@ -7,5 +7,7 @@ class Constants {
         const val BASE_URL: String = "https://newsapi.org/v2/"
         const val ERROR_DATA=100
         const val ERROR_NULL_DATA=101
+        const val DATE_PATTERN = "hh:mm dd/MM/yyyy"
+
     }
 }

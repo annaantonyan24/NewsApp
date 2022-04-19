@@ -15,6 +15,8 @@ data class MyNewsDataModel(
     val title: String,
     @ColumnInfo(name = "description")
     val description: String,
+    @ColumnInfo(name = "category")
+    val category: String,
     @ColumnInfo(name = "image")
     val image: String,
     @ColumnInfo(name = "publishedAt")

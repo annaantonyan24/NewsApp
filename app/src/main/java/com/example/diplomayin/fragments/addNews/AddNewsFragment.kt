@@ -1,6 +1,7 @@
 package com.example.diplomayin.fragments.addNews
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
@@ -10,6 +11,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -18,8 +20,10 @@ import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -27,6 +31,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.data.model.model.room.MyNewsDataModel
+import com.example.data.util.Constants.Companion.DATE_PATTERN
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.databinding.DialogCustomimageSelectionBinding
@@ -45,16 +50,19 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
-import java.time.LocalDateTime
 import java.util.*
 
 class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
 
     private val viewModel: AddNewsViewModel by viewModel()
     override val binding: FragmentAddNewsBinding by viewBinding()
-    private val bundle = Bundle()
     private var mImagePath: String = ""
-    private val date = Calendar.getInstance()
+
+    @SuppressLint("SimpleDateFormat")
+    @RequiresApi(Build.VERSION_CODES.N)
+    val sdf = SimpleDateFormat(DATE_PATTERN)
+    @RequiresApi(Build.VERSION_CODES.N)
+    val currentDate: String = sdf.format(Date())
 
     override fun onView() {
 
@@ -119,13 +127,17 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
                 val myNewsData = MyNewsDataModel(
                     title = title,
                     description = description,
+                    category = category,
                     image = mImagePath,
-                    publishedAt = date.toString(),
+                    publishedAt = currentDate,
                     content = content
                 )
 
                 viewModel.insertMyNews(myNewsData)
                 Toast.makeText(context, "You successfully created yor News!", Toast.LENGTH_SHORT).show()
+                view?.let { view ->
+                    Navigation.findNavController(view).navigate(R.id.myNewsDetailsFragment)
+                }
             }
 
         }
@@ -223,7 +235,6 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
             if (requestCode == CAMERA) {
                 data?.extras?.let {
                     val thumbNail: Bitmap = data.extras!!.get("data") as Bitmap
-                    // mBinding.ivDishImage.setImageBitmap(thumbNail)
 
                     Glide.with(this)
                         .load(thumbNail)
@@ -240,8 +251,6 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
             if (requestCode == GALLERY) {
                 data?.let {
                     val selectedPhotoUri = data.data
-
-                    // binding.ivDishImage.setImageURI(selectedPhotoUri)
 
                     Glide.with(this)
                         .load(selectedPhotoUri)

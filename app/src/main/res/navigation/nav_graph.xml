@@ -45,4 +45,8 @@
         android:name="com.example.diplomayin.fragments.ProfileFragment"
         android:label="My Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/myNewsDetailsFragment"
+        android:name="com.example.diplomayin.fragments.newsDetails.MyNewsDetailsFragment"
+        android:label="MyNewsDetailsFragment" />
 </navigation>

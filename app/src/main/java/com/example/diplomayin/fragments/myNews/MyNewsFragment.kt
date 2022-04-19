@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.adapters.AdapterMyNews
-import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentMyNewsBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
@@ -21,10 +20,10 @@ class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
 
         view?.let { view ->
-            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            Navigation.findNavController(view).navigate(R.id.myNewsDetailsFragment, bundle)
         }
     }, {
-
+        viewModel.deleteMyNews(it)
     })
 
     override fun onView() {

@@ -36,7 +36,7 @@
             android:padding="7dp"
             android:text="Battlefield 2042 lead designer departs EA DICE - GamesRadar+"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
@@ -52,7 +52,7 @@
             android:maxLines="2"
             android:padding="5dp"
             android:text="Fawzi Mesmar says succession talks have been ongoing"
-            android:textSize="10sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_news"
             app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -73,7 +73,19 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="Published at: 10:33"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="20"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="Health"
+                android:textColor="@color/rose_gold"
+                android:textSize="12sp" />
 
         </LinearLayout>
 

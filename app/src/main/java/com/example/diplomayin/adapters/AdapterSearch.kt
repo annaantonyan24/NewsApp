@@ -1,11 +1,13 @@
 package com.example.diplomayin.adapters
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.domain.model.Data
 
@@ -27,10 +29,14 @@ class AdapterSearch(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack:
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Data) {
+            val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
+            val date: String? = article.publishedAt?.take(10)
+            val publishedAt = "$time $date"
+
             with(binding) {
                 tvAuthor.text = article.author
                 tvDescription.text = article.description
-                tvTime.text = article.publishedAt
+                tvTime.text = itemView.context.getString(R.string.published, publishedAt)
                 tvTitle.text = article.title
             }
             Glide.with(binding.root)
