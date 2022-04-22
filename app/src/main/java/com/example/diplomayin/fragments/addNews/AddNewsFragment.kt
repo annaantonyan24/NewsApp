@@ -24,6 +24,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.Navigation
+import coil.clear
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -135,8 +136,14 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
 
                 viewModel.insertMyNews(myNewsData)
                 Toast.makeText(context, "You successfully created yor News!", Toast.LENGTH_SHORT).show()
-                view?.let { view ->
-                    Navigation.findNavController(view).navigate(R.id.myNewsDetailsFragment)
+                with(binding){
+                    etTitle.text.clear()
+                    etCategory.text.clear()
+                    etContent.text.clear()
+                    etDescription.text.clear()
+                    ivNewsImage.setImageResource(0)
+                    ivAddImageCenter.visibility = View.VISIBLE
+                    ivEditImage.visibility = View.GONE
                 }
             }
 

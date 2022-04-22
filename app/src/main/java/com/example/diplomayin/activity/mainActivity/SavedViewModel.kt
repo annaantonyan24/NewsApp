@@ -24,7 +24,7 @@ class SavedViewModel(
         savedNews()
     }
 
-    private fun savedNews() {
+    fun savedNews() {
         viewModelScope.launch {
             val result = getSavedNewsInteractor.getSavedNews().reversed()
             _getSavedNews.emit(result)
@@ -42,5 +42,24 @@ class SavedViewModel(
             deleteNewsInteractor.deleteNews(news)
         }
     }
+
+//    fun updateSuggestedBooksList(dataModelId : Long,isAddedLibrary : Boolean){
+//        viewModelScope.launch {
+//            getSavedNewsInteractor.getSavedNews().forEachIndexed { index, element ->
+//                if(getSavedNewsInteractor.getSavedNews()[index].url == )
+//            }
+//        }
+//
+//
+//        for (i in itemSuggestedBooksList.indices){
+//            if (itemSuggestedBooksList[i].id == dataModelId){
+//                itemSuggestedBooksList[i] = itemSuggestedBooksList[i].copy(isAddedLibrary = isAddedLibrary)
+//            }
+//        }
+//        itemSuggestedBooks = itemSuggestedBooks?.copy(booksList = itemSuggestedBooksList)
+//        viewModelScope.launch {
+//            _suggestedBooksList.emit(itemSuggestedBooks)
+//        }
+//    }
 
 }

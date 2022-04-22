@@ -11,7 +11,7 @@ import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.domain.model.Data
 
 
-class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Data) -> Unit) :
+class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemDeleteCallBack: (Data) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
@@ -28,7 +28,7 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Da
     inner class ViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Data) {
+        fun bind(article: Data, position: Int) {
             val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
             val date: String? = article.publishedAt?.take(10)
             val publishedAt = "$time $date"
@@ -38,6 +38,7 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Da
                 tvDescription.text = article.description
                 tvTime.text = itemView.context.getString(R.string.published, publishedAt)
                 tvTitle.text = article.title
+                binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
             }
             Glide.with(binding.root)
                 .load(article.urlToImage)
@@ -49,6 +50,9 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Da
             }
 
             binding.btnSave.setOnClickListener {
+                article.isSaved = false
+                itemDeleteCallBack(article)
+                notifyItemRemoved(position)
             }
         }
     }
@@ -67,7 +71,7 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Da
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val article = differ.currentList[position]
-        (holder as ViewHolder).bind(article)
+        (holder as ViewHolder).bind(article,position)
 
     }
 

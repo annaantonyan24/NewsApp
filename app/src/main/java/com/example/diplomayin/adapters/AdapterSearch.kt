@@ -11,7 +11,11 @@ import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.domain.model.Data
 
-class AdapterSearch(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack: (Data) -> Unit) :
+class AdapterSearch(
+    var itemClickCallBack: (Data) -> Unit,
+    var itemSaveCallBack: (Data) -> Unit,
+    var itemDeleteCallBack: (Data) -> Unit
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
@@ -49,6 +53,14 @@ class AdapterSearch(var itemClickCallBack: (Data) -> Unit, var itemSaveCallBack:
             }
 
             binding.btnSave.setOnClickListener {
+                if (!article.isSaved) {
+                    article.isSaved = true
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
+                    itemSaveCallBack(article)
+                } else {
+                    article.isSaved = false
+                    itemDeleteCallBack(article)
+                }
             }
         }
     }

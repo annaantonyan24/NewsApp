@@ -6,10 +6,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
+import com.example.diplomayin.activity.mainActivity.SavedViewModel
 import com.example.diplomayin.adapters.AdapterSearch
 import com.example.diplomayin.databinding.FragmentSearchBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
+import com.example.domain.model.Data
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
@@ -17,6 +20,7 @@ class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
     private val viewModel: SearchViewModel by viewModel()
     override val binding: FragmentSearchBinding by viewBinding()
     private val bundle = Bundle()
+    private val savedViewModel: SavedViewModel by sharedViewModel()
 
     private var adapterNews = AdapterSearch({
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
@@ -24,8 +28,32 @@ class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
+    }, {
+        savedViewModel.insertNews(
+            Data(
+                author = it.author,
+                title = it.title,
+                description = it.description,
+                urlToImage = it.urlToImage,
+                publishedAt = it.publishedAt,
+                url = it.url,
+                content = it.content,
+                isSaved = it.isSaved
+            )
+        )
     }) {
-
+        savedViewModel.deleteNews(
+            Data(
+                author = it.author,
+                title = it.title,
+                description = it.description,
+                urlToImage = it.urlToImage,
+                publishedAt = it.publishedAt,
+                url = it.url,
+                content = it.content,
+                isSaved = it.isSaved
+            )
+        )
     }
 
     override fun onView() {

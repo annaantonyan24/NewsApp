@@ -25,11 +25,10 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
     }) {
-
+        savedViewModel.deleteNews(it)
     }
 
     override fun onView() {
-
         with(binding) {
             rvNews.apply {
                 context?.let {
