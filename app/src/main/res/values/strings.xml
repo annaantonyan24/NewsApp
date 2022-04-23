@@ -26,5 +26,7 @@
     <string name="err_msg_enter_news_description">Enter news description.</string>
     <string name="err_msg_select_news_category">Select news category.</string>
     <string name="err_msg_enter_news_content">Enter news content.</string>
+    <string name="no_item_in_list_txt"><b>Your news list is empty.</b>\n\nGo to <b>ADD NEWS</b> section to create your own news.</string>
+    <string name="no_item_saved_txt"><b>You don\'t have saved news yet.</b>\n\nPress on bookmark icon to save news.</string>
 
 </resources>

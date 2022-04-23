@@ -1,6 +1,8 @@
 package com.example.diplomayin.fragments.myNews
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
@@ -9,6 +11,7 @@ import com.example.diplomayin.adapters.AdapterMyNews
 import com.example.diplomayin.databinding.FragmentMyNewsBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
+import kotlinx.coroutines.flow.onEmpty
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
@@ -42,6 +45,9 @@ class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
 
     override fun onEach() {
         onEach(viewModel.getMyNews) {
+            if(it.isEmpty()){
+                binding.tvText.visibility = View.VISIBLE
+            }
             newsAdapter.differ.submitList(it)
         }
     }

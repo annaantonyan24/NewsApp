@@ -1,6 +1,7 @@
 package com.example.diplomayin.fragments.savedFragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.diplomayin.FragmentBaseMVVM
@@ -45,6 +46,9 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
 
     override fun onEach() {
         onEach(savedViewModel.getSavedNews) {
+            if(it.isEmpty()){
+                binding.tvText.visibility = View.VISIBLE
+            }
             adapterNews.differ.submitList(it)
         }
     }
