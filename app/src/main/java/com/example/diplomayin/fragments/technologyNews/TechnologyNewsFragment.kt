@@ -35,6 +35,8 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
     }
 
     override fun onView() {
+        binding.swipeRefreshLayout.isRefreshing = true
+
         with(binding) {
             rvNews.apply {
                 context?.let {
@@ -50,6 +52,7 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
     override fun onEach() {
         onEach(viewModel.list) {
             newsAdapter.differ.submitList(it)
+            binding.swipeRefreshLayout.isRefreshing = false
 
             binding.swipeRefreshLayout.setOnRefreshListener {
                 newsAdapter.differ.submitList(it)
