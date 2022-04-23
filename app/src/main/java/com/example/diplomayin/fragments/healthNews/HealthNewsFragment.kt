@@ -29,31 +29,9 @@ class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsHealthBinding>() {
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
     }, { data: Data, isAddedLibrary: Boolean ->
-        savedViewModel.insertNews(
-            Data(
-                author = data.author,
-                title = data.title,
-                description = data.description,
-                urlToImage = data.urlToImage,
-                publishedAt = data.publishedAt,
-                url = data.url,
-                content = data.content,
-                isSaved = data.isSaved
-            )
-        )
+        savedViewModel.insertNews(data)
     }) {
-        savedViewModel.deleteNews(
-            Data(
-                author = it.author,
-                title = it.title,
-                description = it.description,
-                urlToImage = it.urlToImage,
-                publishedAt = it.publishedAt,
-                url = it.url,
-                content = it.content,
-                isSaved = it.isSaved
-            )
-        )
+//        savedViewModel.deleteNews(it)
     }
 
 

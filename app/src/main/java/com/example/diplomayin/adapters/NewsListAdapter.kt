@@ -58,14 +58,15 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                if (!article.isSaved) {
-                    article.isSaved = true
+                itemSaveCallBack(article,article.isSaved)
+//                if (!article.isSaved) {
+//                    article.isSaved = true
                     binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-                    itemSaveCallBack(article,article.isSaved)
-                } else {
-                    article.isSaved = false
-                    itemDeleteCallBack(article)
-                }
+//
+//                } else {
+//                    article.isSaved = false
+//                    itemDeleteCallBack(article)
+//                }
             }
 
         }
@@ -96,10 +97,13 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                if (article.isSaved)
-                    binding.btnSave.setBackgroundResource(R.drawable.ic_save) else
-                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
+                binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
                 itemSaveCallBack(article, !article.isSaved)
+
+//                if (article.isSaved)
+//                    binding.btnSave.setBackgroundResource(R.drawable.ic_save) else
+//                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
+//                itemSaveCallBack(article, !article.isSaved)
             }
 
 //

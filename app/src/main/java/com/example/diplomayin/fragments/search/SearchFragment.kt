@@ -29,31 +29,9 @@ class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
     }, {
-        savedViewModel.insertNews(
-            Data(
-                author = it.author,
-                title = it.title,
-                description = it.description,
-                urlToImage = it.urlToImage,
-                publishedAt = it.publishedAt,
-                url = it.url,
-                content = it.content,
-                isSaved = it.isSaved
-            )
-        )
+        savedViewModel.insertNews(it)
     }) {
-        savedViewModel.deleteNews(
-            Data(
-                author = it.author,
-                title = it.title,
-                description = it.description,
-                urlToImage = it.urlToImage,
-                publishedAt = it.publishedAt,
-                url = it.url,
-                content = it.content,
-                isSaved = it.isSaved
-            )
-        )
+//        savedViewModel.deleteNews(it)
     }
 
     override fun onView() {

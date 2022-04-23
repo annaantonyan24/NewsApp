@@ -50,7 +50,7 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemDeleteCallBack: (
             }
 
             binding.btnSave.setOnClickListener {
-                article.isSaved = false
+//                article.isSaved = false
                 itemDeleteCallBack(article)
                 notifyItemRemoved(position)
             }

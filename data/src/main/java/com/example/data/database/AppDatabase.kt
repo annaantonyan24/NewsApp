@@ -7,7 +7,7 @@ import com.example.data.model.model.room.NewsDataModel
 
 @Database(
     entities = [NewsDataModel::class, MyNewsDataModel::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase() {

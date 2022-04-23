@@ -14,17 +14,13 @@ import kotlinx.coroutines.launch
 class SavedViewModel(
     private val getSavedNewsInteractor: GetSavedNewsInteractor,
     private val insertNewsInteractor: InsertNewsInteractor,
-    private val deleteNewsInteractor: DeleteNewsInteractor,
+    private val deleteNewsInteractor: DeleteNewsInteractor
 ) : ViewModel() {
 
     private val _getSavedNews: MutableSharedFlow<List<Data>> by lazy { MutableSharedFlow() }
     val getSavedNews = _getSavedNews.asSharedFlow()
 
-    init {
-        savedNews()
-    }
-
-    fun savedNews() {
+     fun savedNews() {
         viewModelScope.launch {
             val result = getSavedNewsInteractor.getSavedNews().reversed()
             _getSavedNews.emit(result)
@@ -41,6 +37,7 @@ class SavedViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             deleteNewsInteractor.deleteNews(news)
         }
+        savedNews()
     }
 
 //    fun updateSuggestedBooksList(dataModelId : Long,isAddedLibrary : Boolean){
