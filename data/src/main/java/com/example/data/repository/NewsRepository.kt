@@ -18,4 +18,5 @@ interface NewsRepository {
     suspend fun getMyNews(): List<MyNewsDataModel>
     suspend fun insertMyNews(news:MyNewsDataModel)
     suspend fun deleteMyNews(news:MyNewsDataModel)
+    suspend fun updateMyNews(news:MyNewsDataModel)
 }

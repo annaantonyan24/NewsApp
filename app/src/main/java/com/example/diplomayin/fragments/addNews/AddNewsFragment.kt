@@ -37,6 +37,7 @@ import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.databinding.DialogCustomimageSelectionBinding
 import com.example.diplomayin.databinding.FragmentAddNewsBinding
+import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -58,14 +59,35 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
     private val viewModel: AddNewsViewModel by viewModel()
     override val binding: FragmentAddNewsBinding by viewBinding()
     private var mImagePath: String = ""
+    private var data: MyNewsDataModel? = null
 
     @SuppressLint("SimpleDateFormat")
     @RequiresApi(Build.VERSION_CODES.N)
     val sdf = SimpleDateFormat(DATE_PATTERN)
+
     @RequiresApi(Build.VERSION_CODES.N)
     val currentDate: String = sdf.format(Date())
 
     override fun onView() {
+        val bundle = this.arguments
+        data = bundle?.getParcelable(NewsConstants.NEWS_BUNDLE)
+
+        if (data != null) {
+            with(binding) {
+                etTitle.setText(data?.title)
+                etCategory.setText(data?.category)
+                etDescription.setText(data?.description)
+                etContent.setText(data?.content)
+                mImagePath = data?.image.toString()
+                ivAddImageCenter.visibility = View.GONE
+                ivEditImage.visibility = View.VISIBLE
+                btnAddNews.text = resources.getString(R.string.btn_update_news)
+                Glide.with(this@AddNewsFragment)
+                    .load(data?.image)
+                    .centerCrop()
+                    .into(binding.ivNewsImage)
+            }
+        }
 
         binding.flSelectImage.setOnClickListener {
             customImageSelectionDialog()
@@ -75,6 +97,7 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
             myNewsData()
         }
     }
+
 
     private fun myNewsData() {
         val title = binding.etTitle.text.toString().trim { it <= ' ' }
@@ -134,17 +157,25 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
                     content = content
                 )
 
-                viewModel.insertMyNews(myNewsData)
-                Toast.makeText(context, "You successfully created yor News!", Toast.LENGTH_SHORT).show()
-                with(binding){
-                    etTitle.text.clear()
-                    etCategory.text.clear()
-                    etContent.text.clear()
-                    etDescription.text.clear()
-                    ivNewsImage.setImageResource(0)
-                    ivAddImageCenter.visibility = View.VISIBLE
-                    ivEditImage.visibility = View.GONE
+                if (data == null) {
+                    viewModel.insertMyNews(myNewsData)
+                    Toast.makeText(context, "You successfully created yor News!", Toast.LENGTH_SHORT)
+                        .show()
+                    with(binding) {
+                        etTitle.text.clear()
+                        etCategory.text.clear()
+                        etContent.text.clear()
+                        etDescription.text.clear()
+                        ivNewsImage.setImageResource(0)
+                        ivAddImageCenter.visibility = View.VISIBLE
+                        ivEditImage.visibility = View.GONE
+                    }
+                } else {
+                    viewModel.updateMyNews(myNewsData)
+                    Toast.makeText(context, "You successfully updated yor News!", Toast.LENGTH_SHORT)
+                        .show()
                 }
+
             }
 
         }

@@ -14,4 +14,7 @@ interface MyNewsDao {
 
     @Delete
     fun deleteMyNews(item: MyNewsDataModel)
+
+    @Update
+    fun updateMyNews(item: MyNewsDataModel)
 }

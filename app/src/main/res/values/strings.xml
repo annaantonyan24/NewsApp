@@ -19,6 +19,7 @@
     <string name="lbl_ingredients">Ingredients</string>
     <string name="lbl_time">Cooking Time in Minutes</string>
     <string name="lbl_content">Content</string>
+    <string name="btn_update_news">Update News</string>
     <string name="permission_not_available_message">It looks like you have turned off permissions required for this feature. It can be enabled under Application Settings</string>
 
     <string name="err_msg_select_img">Select News image.</string>

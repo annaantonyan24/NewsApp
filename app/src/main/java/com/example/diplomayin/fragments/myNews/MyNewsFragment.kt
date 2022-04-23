@@ -14,7 +14,7 @@ import com.example.diplomayin.utils.viewBinding
 import kotlinx.coroutines.flow.onEmpty
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
+class MyNewsFragment : FragmentBaseMVVM<FragmentMyNewsBinding>() {
     private val viewModel: MyNewsViewModel by viewModel()
     override val binding: FragmentMyNewsBinding by viewBinding()
     private val bundle = Bundle()
@@ -27,7 +27,13 @@ class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
         }
     }, {
         viewModel.deleteMyNews(it)
-    })
+    }) { data ->
+        bundle.putParcelable(NewsConstants.NEWS_BUNDLE, data)
+
+        view?.let { view ->
+            Navigation.findNavController(view).navigate(R.id.addNewsFragment, bundle)
+        }
+    }
 
     override fun onView() {
 
@@ -45,7 +51,7 @@ class MyNewsFragment: FragmentBaseMVVM<FragmentMyNewsBinding>()  {
 
     override fun onEach() {
         onEach(viewModel.getMyNews) {
-            if(it.isEmpty()){
+            if (it.isEmpty()) {
                 binding.tvText.visibility = View.VISIBLE
             }
             newsAdapter.differ.submitList(it)

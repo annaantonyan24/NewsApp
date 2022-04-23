@@ -13,7 +13,8 @@ import com.example.diplomayin.databinding.ItemMyNewsBinding
 
 class AdapterMyNews(
     var itemClickCallBack: (MyNewsDataModel) -> Unit,
-    var itemDeleteCallBack: (MyNewsDataModel) -> Unit
+    var itemDeleteCallBack: (MyNewsDataModel) -> Unit,
+    var itemUpdateCallBack: (MyNewsDataModel) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -53,6 +54,11 @@ class AdapterMyNews(
             binding.btnDelete.setOnClickListener {
                 itemDeleteCallBack(article)
                 notifyItemRemoved(position)
+            }
+
+            binding.btnEdit.setOnClickListener {
+                itemUpdateCallBack(article)
+                notifyItemChanged(position)
             }
         }
     }

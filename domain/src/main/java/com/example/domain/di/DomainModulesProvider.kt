@@ -19,4 +19,5 @@ val interactorModule = module {
     factory <InsertMyNewsInteractor> { InsertMyNewsUseCase(get(),get()) }
     factory <GetMyNewsInteractor> { GetMyNewsUseCase(get(),get()) }
     factory <DeleteMyNewsInteractor> { DeleteMyNewsUseCase(get(),get()) }
+    factory <UpdateMyNewsInteractor> { UpdateMyNewsUseCase(get(),get()) }
 }

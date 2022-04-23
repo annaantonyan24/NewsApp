@@ -49,4 +49,8 @@
         android:id="@+id/myNewsDetailsFragment"
         android:name="com.example.diplomayin.fragments.newsDetails.MyNewsDetailsFragment"
         android:label="MyNewsDetailsFragment" />
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.example.diplomayin.fragments.addNews.AddNewsFragment"
+        android:label="AddNewsFragment" />
 </navigation>

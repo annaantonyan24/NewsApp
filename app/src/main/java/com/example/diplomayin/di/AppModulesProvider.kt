@@ -17,5 +17,5 @@ val viewModelModule = module {
     viewModel { SearchViewModel(get()) }
     viewModel { SavedViewModel(get(),get(),get()) }
     viewModel { MyNewsViewModel(get(),get()) }
-    viewModel { AddNewsViewModel(get()) }
+    viewModel { AddNewsViewModel(get(),get()) }
 }

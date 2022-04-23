@@ -44,5 +44,6 @@ class NewsRepositoryImpl(
     override suspend fun getMyNews(): List<MyNewsDataModel> = myNewsDao.getMyNews()
     override suspend fun insertMyNews(news: MyNewsDataModel) = myNewsDao.insertMyNews(news)
     override suspend fun deleteMyNews(news: MyNewsDataModel) = myNewsDao.deleteMyNews(news)
+    override suspend fun updateMyNews(news: MyNewsDataModel) = myNewsDao.updateMyNews(news)
 
 }
