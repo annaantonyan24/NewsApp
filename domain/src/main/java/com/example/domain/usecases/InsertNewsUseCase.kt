@@ -1,6 +1,7 @@
 package com.example.domain.usecases
 
 import com.example.core.dispatcher.CoroutineDispatcherProvider
+import com.example.data.model.model.room.NewsDataModel
 import com.example.data.repository.NewsRepository
 import com.example.domain.interactors.InsertNewsInteractor
 import com.example.domain.model.Data
@@ -13,7 +14,7 @@ class InsertNewsUseCase(
     private val dispatcher: CoroutineDispatcherProvider
 ) : InsertNewsInteractor {
 
-    override suspend fun insertNews(news: Data) = withContext(dispatcher.io) {
-       newsRepo.insertNews(news.toNewsModel())
+    override suspend fun insertNews(news: NewsDataModel) = withContext(dispatcher.io) {
+       newsRepo.insertNews(news)
     }
 }

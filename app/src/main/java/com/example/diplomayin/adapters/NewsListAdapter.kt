@@ -9,24 +9,25 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.data.model.model.room.NewsDataModel
 import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
 import com.example.diplomayin.databinding.ItemNewsFirstBinding
 import com.example.domain.model.Data
 
 class NewsListAdapter(
-    var itemClickCallBack: (Data) -> Unit,
-    var itemSaveCallBack: (Data, isAddedLibrary: Boolean) -> Unit,
-    var itemDeleteCallBack: (Data) -> Unit
+    var itemClickCallBack: (NewsDataModel) -> Unit,
+    var itemSaveCallBack: (NewsDataModel, isAddedLibrary: Boolean) -> Unit,
+    var itemDeleteCallBack: (NewsDataModel) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<NewsDataModel>() {
 
-        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean =
+        override fun areItemsTheSame(oldItem: NewsDataModel, newItem: NewsDataModel): Boolean =
             oldItem.url == newItem.url
 
-        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean =
+        override fun areContentsTheSame(oldItem: NewsDataModel, newItem: NewsDataModel): Boolean =
             oldItem == newItem
     }
 
@@ -37,7 +38,7 @@ class NewsListAdapter(
 
         @SuppressLint("SimpleDateFormat")
         @RequiresApi(Build.VERSION_CODES.O)
-        fun bind(article: Data) {
+        fun bind(article: NewsDataModel) {
             val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
             val date: String? = article.publishedAt?.take(10)
             val publishedAt = "$time $date"
@@ -47,6 +48,11 @@ class NewsListAdapter(
                 tvDescription.text = article.description
                 tvTime.text = itemView.context.getString(R.string.published_first, publishedAt)
                 tvTitle.text = article.title
+                if(article.isSaved) {
+                    btnSave.setBackgroundResource(R.drawable.ic_saved)
+                } else {
+                    btnSave.setBackgroundResource(R.drawable.ic_not_saved)
+                }
             }
             Glide.with(binding.root)
                 .load(article.urlToImage)
@@ -58,15 +64,15 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                itemSaveCallBack(article,article.isSaved)
-//                if (!article.isSaved) {
-//                    article.isSaved = true
+                if (!article.isSaved) {
+                    article.isSaved = true
                     binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-//
-//                } else {
-//                    article.isSaved = false
-//                    itemDeleteCallBack(article)
-//                }
+                    itemSaveCallBack(article, article.isSaved)
+                } else {
+                    article.isSaved = false
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_not_saved)
+                    itemDeleteCallBack(article)
+                }
             }
 
         }
@@ -76,7 +82,7 @@ class NewsListAdapter(
     inner class ViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Data) {
+        fun bind(article: NewsDataModel) {
             val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
             val date: String? = article.publishedAt?.take(10)
             val publishedAt = "$time $date"
@@ -97,25 +103,16 @@ class NewsListAdapter(
             }
 
             binding.btnSave.setOnClickListener {
-                binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-                itemSaveCallBack(article, !article.isSaved)
-
-//                if (article.isSaved)
-//                    binding.btnSave.setBackgroundResource(R.drawable.ic_save) else
-//                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-//                itemSaveCallBack(article, !article.isSaved)
+                if (!article.isSaved) {
+                    article.isSaved = true
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
+                    itemSaveCallBack(article, article.isSaved)
+                } else {
+                    article.isSaved = false
+                    binding.btnSave.setBackgroundResource(R.drawable.ic_not_saved)
+                    itemDeleteCallBack(article)
+                }
             }
-
-//
-//            if (!article.isSaved) {
-//                article.isSaved = true
-//                binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-//                itemSaveCallBack(article)
-//            } else {
-//                article.isSaved = false
-//                itemDeleteCallBack(article)
-//            }
-
         }
     }
 

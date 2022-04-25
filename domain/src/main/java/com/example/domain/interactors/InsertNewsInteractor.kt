@@ -6,5 +6,5 @@ import com.example.domain.model.Data
 
 interface InsertNewsInteractor {
 
-    suspend fun insertNews(news:Data)
+    suspend fun insertNews(news:NewsDataModel)
 }

@@ -27,7 +27,7 @@ class SavedViewModel(
         }
     }
 
-    fun insertNews(news: Data) {
+    fun insertNews(news: NewsDataModel) {
         viewModelScope.launch(Dispatchers.IO) {
             insertNewsInteractor.insertNews(news)
         }

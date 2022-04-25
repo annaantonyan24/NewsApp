@@ -24,7 +24,7 @@ class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
         bundle.putParcelable(NewsConstants.NEWS_BUNDLE, it)
 
         view?.let { view ->
-            Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
+            Navigation.findNavController(view).navigate(R.id.savedNewsDetailsFragment, bundle)
         }
     }) {
         savedViewModel.deleteNews(it)

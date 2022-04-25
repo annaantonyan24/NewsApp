@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.data.model.model.room.NewsDataModel
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.activity.mainActivity.SavedViewModel
@@ -37,10 +38,10 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
-    }, { data: Data, isAddedLibrary: Boolean ->
+    }, { data: NewsDataModel, isAddedLibrary: Boolean ->
         savedViewModel.insertNews(data)
     }) {
-//        savedViewModel.deleteNews(it)
+        savedViewModel.deleteNews(it)
     }
 
 

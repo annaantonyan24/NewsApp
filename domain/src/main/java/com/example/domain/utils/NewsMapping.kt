@@ -14,15 +14,14 @@ fun Article.toNews(): Data = Data(
     content
 )
 
-fun Data.toNewsModel(): NewsDataModel = NewsDataModel(
+fun Article.toNewsModel(): NewsDataModel = NewsDataModel(
     author = author,
     title = title,
     description = description,
     urlToImage = urlToImage,
     publishedAt = publishedAt,
     url = url,
-    content = content,
-    isSaved = isSaved
+    content = content
 )
 
 fun NewsDataModel.toData(): Data = Data(

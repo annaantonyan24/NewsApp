@@ -26,5 +26,5 @@ data class NewsDataModel(
     @ColumnInfo(name = "content")
     val content: String?,
     @ColumnInfo(name = "isSaved")
-    var isSaved: Boolean
+    var isSaved: Boolean = false
 ):Parcelable
