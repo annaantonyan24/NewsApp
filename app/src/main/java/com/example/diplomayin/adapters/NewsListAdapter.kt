@@ -92,6 +92,11 @@ class NewsListAdapter(
                 tvDescription.text = article.description
                 tvTime.text = itemView.context.getString(R.string.published, publishedAt)
                 tvTitle.text = article.title
+                if(article.isSaved) {
+                    btnSave.setBackgroundResource(R.drawable.ic_saved)
+                } else {
+                    btnSave.setBackgroundResource(R.drawable.ic_not_saved)
+                }
             }
             Glide.with(binding.root)
                 .load(article.urlToImage)

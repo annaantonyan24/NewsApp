@@ -21,7 +21,16 @@ class SearchedNewsUseCase(
             when (val apiData = newsRepository.getSearchedNews(title)) {
                 is ActionResult.Success -> {
                     apiData.data?.let { it ->
-                        ActionResult.Success(it.articles.map { it.toNewsModel() })
+                        val mapList = it.articles.map { it.toNewsModel() }
+                        val dbData = newsRepository.getSavedNews()
+                        mapList.forEach { mapNews ->
+                            dbData.forEach { dbNews ->
+                                if (mapNews.url == dbNews.url) {
+                                    mapNews.isSaved = true
+                                }
+                            }
+                        }
+                        ActionResult.Success(mapList)
                     } ?: ActionResult.Error(
                         CallException(
                             Constants.ERROR_NULL_DATA
