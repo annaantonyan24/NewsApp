@@ -11,6 +11,6 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertData(item: NewsDataModel)
 
-    @Delete
+    @Delete()
     fun deleteData(item: NewsDataModel)
 }

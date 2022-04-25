@@ -1,6 +1,7 @@
 package com.example.domain.usecases
 
 import com.example.core.dispatcher.CoroutineDispatcherProvider
+import com.example.data.model.model.room.NewsDataModel
 import com.example.data.repository.NewsRepository
 import com.example.domain.interactors.DeleteNewsInteractor
 import com.example.domain.model.Data
@@ -11,7 +12,7 @@ class DeleteNewsUseCase(
     private val newsRepo: NewsRepository,
     private val dispatcher: CoroutineDispatcherProvider
 ) : DeleteNewsInteractor  {
-    override suspend fun deleteNews(news: Data) = withContext(dispatcher.io) {
-        newsRepo.deleteNews(news.toNewsModel())
+    override suspend fun deleteNews(news: NewsDataModel) = withContext(dispatcher.io) {
+        newsRepo.deleteNews(news)
     }
 }

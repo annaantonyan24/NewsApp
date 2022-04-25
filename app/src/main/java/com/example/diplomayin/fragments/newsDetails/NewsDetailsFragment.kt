@@ -7,6 +7,7 @@ import android.text.SpannableString
 import android.text.style.UnderlineSpan
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.data.model.model.room.NewsDataModel
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.databinding.NewsDetailsBinding
@@ -18,7 +19,7 @@ import com.example.domain.model.Data
 class NewsDetailsFragment : FragmentBaseMVVM<NewsDetailsBinding>() {
 
     override val binding: NewsDetailsBinding by viewBinding()
-    private var data: Data? = null
+    private var data: NewsDataModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

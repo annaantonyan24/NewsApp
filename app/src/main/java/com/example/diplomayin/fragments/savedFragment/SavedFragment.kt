@@ -12,11 +12,12 @@ import com.example.diplomayin.databinding.FragmentSavedBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SavedFragment: FragmentBaseMVVM<FragmentSavedBinding>() {
 
     override val binding : FragmentSavedBinding by viewBinding()
-    private val savedViewModel: SavedViewModel by sharedViewModel()
+    private val savedViewModel: SavedViewModel by viewModel()
     private val bundle = Bundle()
 
     private var adapterNews = AdapterDB({

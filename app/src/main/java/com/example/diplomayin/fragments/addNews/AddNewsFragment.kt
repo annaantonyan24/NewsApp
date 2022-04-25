@@ -148,16 +148,16 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
             }
 
             else -> {
-                val myNewsData = MyNewsDataModel(
-                    title = title,
-                    description = description,
-                    category = category,
-                    image = mImagePath,
-                    publishedAt = currentDate,
-                    content = content
-                )
 
                 if (data == null) {
+                    val myNewsData = MyNewsDataModel(
+                        title = title,
+                        description = description,
+                        category = category,
+                        image = mImagePath,
+                        publishedAt = currentDate,
+                        content = content
+                    )
                     viewModel.insertMyNews(myNewsData)
                     Toast.makeText(context, "You successfully created yor News!", Toast.LENGTH_SHORT)
                         .show()
@@ -171,7 +171,22 @@ class AddNewsFragment : FragmentBaseMVVM<FragmentAddNewsBinding>() {
                         ivEditImage.visibility = View.GONE
                     }
                 } else {
-                    viewModel.updateMyNews(myNewsData)
+                    val myNewsData = data?.myNewsID?.let {id->
+                        data?.publishedAt?.let { published ->
+                            MyNewsDataModel(
+                                myNewsID = id,
+                                title = title,
+                                description = description,
+                                category = category,
+                                image = mImagePath,
+                                publishedAt = published,
+                                content = content
+                            )
+                        }
+                    }
+                    if (myNewsData != null) {
+                        viewModel.updateMyNews(myNewsData)
+                    }
                     Toast.makeText(context, "You successfully updated yor News!", Toast.LENGTH_SHORT)
                         .show()
                 }

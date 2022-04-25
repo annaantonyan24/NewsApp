@@ -17,7 +17,7 @@ class SavedViewModel(
     private val deleteNewsInteractor: DeleteNewsInteractor
 ) : ViewModel() {
 
-    private val _getSavedNews: MutableSharedFlow<List<Data>> by lazy { MutableSharedFlow() }
+    private val _getSavedNews: MutableSharedFlow<List<NewsDataModel>> by lazy { MutableSharedFlow() }
     val getSavedNews = _getSavedNews.asSharedFlow()
 
      fun savedNews() {
@@ -33,11 +33,11 @@ class SavedViewModel(
         }
     }
 
-    fun deleteNews(news: Data) {
+    fun deleteNews(news: NewsDataModel) {
         viewModelScope.launch(Dispatchers.IO) {
             deleteNewsInteractor.deleteNews(news)
+            savedNews()
         }
-        savedNews()
     }
 
 //    fun updateSuggestedBooksList(dataModelId : Long,isAddedLibrary : Boolean){

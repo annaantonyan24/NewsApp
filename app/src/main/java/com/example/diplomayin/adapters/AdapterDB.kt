@@ -6,20 +6,20 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.data.model.model.room.NewsDataModel
 import com.example.diplomayin.R
 import com.example.diplomayin.databinding.ItemNewsBinding
-import com.example.domain.model.Data
 
 
-class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemDeleteCallBack: (Data) -> Unit) :
+class AdapterDB(var itemClickCallBack: (NewsDataModel) -> Unit, var itemDeleteCallBack: (NewsDataModel) -> Unit) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val differCallBack = object : DiffUtil.ItemCallback<Data>() {
+    private val differCallBack = object : DiffUtil.ItemCallback<NewsDataModel>() {
 
-        override fun areItemsTheSame(oldItem: Data, newItem: Data): Boolean =
-            oldItem.url == newItem.url
+        override fun areItemsTheSame(oldItem: NewsDataModel, newItem: NewsDataModel): Boolean =
+            oldItem.newsID == newItem.newsID
 
-        override fun areContentsTheSame(oldItem: Data, newItem: Data): Boolean =
+        override fun areContentsTheSame(oldItem: NewsDataModel, newItem: NewsDataModel): Boolean =
             oldItem == newItem
     }
 
@@ -28,7 +28,7 @@ class AdapterDB(var itemClickCallBack: (Data) -> Unit, var itemDeleteCallBack: (
     inner class ViewHolder(private val binding: ItemNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(article: Data, position: Int) {
+        fun bind(article: NewsDataModel, position: Int) {
             val time = article.publishedAt?.substring(startIndex = 11, endIndex = 16)
             val date: String? = article.publishedAt?.take(10)
             val publishedAt = "$time $date"

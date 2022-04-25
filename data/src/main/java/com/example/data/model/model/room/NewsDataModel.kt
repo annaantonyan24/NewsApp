@@ -1,9 +1,12 @@
 package com.example.data.model.model.room
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "newsTable")
 data class NewsDataModel(
     @PrimaryKey(autoGenerate = true)
@@ -24,4 +27,4 @@ data class NewsDataModel(
     val content: String?,
     @ColumnInfo(name = "isSaved")
     var isSaved: Boolean
-)
+):Parcelable
