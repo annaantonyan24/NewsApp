@@ -1,18 +1,14 @@
 package com.example.diplomayin.fragments.allNews
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.model.model.room.NewsDataModel
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.activity.mainActivity.SavedViewModel
@@ -20,7 +16,6 @@ import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentAllNewsBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
-import com.example.domain.model.Data
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,7 +33,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
-    }, { data: NewsDataModel, isAddedLibrary: Boolean ->
+    }, { data ->
         savedViewModel.insertNews(data)
     }) {
         savedViewModel.deleteNews(it)
@@ -47,7 +42,6 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
 
 
     @RequiresApi(Build.VERSION_CODES.M)
-    @SuppressLint("NotifyDataSetChanged")
     override fun onView() {
         binding.swipeRefreshLayout.isRefreshing = true
         if(!isOnline()){

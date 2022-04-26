@@ -36,27 +36,8 @@ class SavedViewModel(
     fun deleteNews(news: NewsDataModel) {
         viewModelScope.launch(Dispatchers.IO) {
             deleteNewsInteractor.deleteNews(news)
-            savedNews()
         }
+        savedNews()
     }
-
-//    fun updateSuggestedBooksList(dataModelId : Long,isAddedLibrary : Boolean){
-//        viewModelScope.launch {
-//            getSavedNewsInteractor.getSavedNews().forEachIndexed { index, element ->
-//                if(getSavedNewsInteractor.getSavedNews()[index].url == )
-//            }
-//        }
-//
-//
-//        for (i in itemSuggestedBooksList.indices){
-//            if (itemSuggestedBooksList[i].id == dataModelId){
-//                itemSuggestedBooksList[i] = itemSuggestedBooksList[i].copy(isAddedLibrary = isAddedLibrary)
-//            }
-//        }
-//        itemSuggestedBooks = itemSuggestedBooks?.copy(booksList = itemSuggestedBooksList)
-//        viewModelScope.launch {
-//            _suggestedBooksList.emit(itemSuggestedBooks)
-//        }
-//    }
 
 }

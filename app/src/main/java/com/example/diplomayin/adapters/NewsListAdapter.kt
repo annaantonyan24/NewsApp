@@ -17,7 +17,7 @@ import com.example.domain.model.Data
 
 class NewsListAdapter(
     var itemClickCallBack: (NewsDataModel) -> Unit,
-    var itemSaveCallBack: (NewsDataModel, isAddedLibrary: Boolean) -> Unit,
+    var itemSaveCallBack: (NewsDataModel) -> Unit,
     var itemDeleteCallBack: (NewsDataModel) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -67,7 +67,7 @@ class NewsListAdapter(
                 if (!article.isSaved) {
                     article.isSaved = true
                     binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-                    itemSaveCallBack(article, article.isSaved)
+                    itemSaveCallBack(article)
                 } else {
                     article.isSaved = false
                     binding.btnSave.setBackgroundResource(R.drawable.ic_not_saved)
@@ -111,7 +111,7 @@ class NewsListAdapter(
                 if (!article.isSaved) {
                     article.isSaved = true
                     binding.btnSave.setBackgroundResource(R.drawable.ic_saved)
-                    itemSaveCallBack(article, article.isSaved)
+                    itemSaveCallBack(article)
                 } else {
                     article.isSaved = false
                     binding.btnSave.setBackgroundResource(R.drawable.ic_not_saved)

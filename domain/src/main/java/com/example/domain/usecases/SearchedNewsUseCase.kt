@@ -27,6 +27,7 @@ class SearchedNewsUseCase(
                             dbData.forEach { dbNews ->
                                 if (mapNews.url == dbNews.url) {
                                     mapNews.isSaved = true
+                                    mapNews.newsID = dbNews.newsID
                                 }
                             }
                         }

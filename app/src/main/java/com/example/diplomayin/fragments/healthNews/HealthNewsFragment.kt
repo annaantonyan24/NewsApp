@@ -29,10 +29,10 @@ class HealthNewsFragment : FragmentBaseMVVM<FragmentNewsHealthBinding>() {
         view?.let { view ->
             Navigation.findNavController(view).navigate(R.id.navigation_details, bundle)
         }
-    }, { data: NewsDataModel, isAddedLibrary: Boolean ->
+    }, { data: NewsDataModel ->
         savedViewModel.insertNews(data)
     }) {
-//        savedViewModel.deleteNews(it)
+        savedViewModel.deleteNews(it)
     }
 
 

@@ -31,7 +31,7 @@ class SearchFragment : FragmentBaseMVVM<FragmentSearchBinding>() {
     }, {
         savedViewModel.insertNews(it)
     }) {
-//        savedViewModel.deleteNews(it)
+        savedViewModel.deleteNews(it)
     }
 
     override fun onView() {
