@@ -48,6 +48,7 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
             binding.tvText.visibility = View.VISIBLE
             binding.swipeRefreshLayout.isRefreshing = false
         }
+
         with(binding) {
             rvNews.apply {
                 context?.let {

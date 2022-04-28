@@ -1,7 +1,12 @@
 package com.example.diplomayin.fragments.technologyNews
 
-import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.data.model.model.room.NewsDataModel
@@ -12,7 +17,6 @@ import com.example.diplomayin.adapters.NewsListAdapter
 import com.example.diplomayin.databinding.FragmentNewsTechnologyBinding
 import com.example.diplomayin.utils.NewsConstants
 import com.example.diplomayin.utils.viewBinding
-import com.example.domain.model.Data
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -35,9 +39,13 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
         savedViewModel.deleteNews(it)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onView() {
         binding.swipeRefreshLayout.isRefreshing = true
-
+        if(!isOnline()){
+            binding.tvText.visibility = View.VISIBLE
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
         with(binding) {
             rvNews.apply {
                 context?.let {
@@ -49,7 +57,6 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     override fun onEach() {
         onEach(viewModel.list) {
             newsAdapter.differ.submitList(it)
@@ -57,10 +64,31 @@ class TechnologyNewsFragment : FragmentBaseMVVM<FragmentNewsTechnologyBinding>()
 
             binding.swipeRefreshLayout.setOnRefreshListener {
                 newsAdapter.differ.submitList(it)
-                newsAdapter.notifyDataSetChanged()
                 binding.swipeRefreshLayout.isRefreshing = false
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun isOnline(): Boolean {
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            when {
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                    return true
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                    return true
+                }
+                capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                    return true
+                }
+            }
+        }
+        return false
     }
 
 }
