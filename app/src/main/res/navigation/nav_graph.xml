@@ -7,18 +7,9 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.example.diplomayin.fragments.newsFragment.NewsFragment"
-        android:label="News"
-        tools:layout="@layout/fragment_news">
-
-        <action
-            android:id="@+id/action_navigation_home_to_navigation_details"
-            app:destination="@id/navigation_details"
-            app:popUpTo="@id/newsFragment"
-            app:launchSingleTop="false"
-            app:popUpToInclusive="false"/>
-
-    </fragment>
+        android:name="com.example.diplomayin.fragments.allNews.NewsFragment"
+        android:label="fragment_all_news"
+        tools:layout="@layout/fragment_all_news" />
 
     <fragment
         android:id="@+id/navigation_details"

@@ -9,6 +9,7 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.data.util.Constants
 import com.example.diplomayin.FragmentBaseMVVM
 import com.example.diplomayin.R
 import com.example.diplomayin.activity.mainActivity.SavedViewModel
@@ -20,9 +21,9 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
+class NewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
 
-    private val viewModel: AllNewsViewModel by viewModel()
+    private val viewModel: NewsViewModel by viewModel()
     override val binding: FragmentAllNewsBinding by viewBinding()
     private val bundle = Bundle()
     private val savedViewModel: SavedViewModel by sharedViewModel()
@@ -40,11 +41,16 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onView() {
+
+        val category = arguments?.getString(Constants.NAV_DRAWER_CATEGORY_KEY) ?: ""
+
+        viewModel.getList(category)
+        context?.let { viewModel.sendCategoryEvent(it, category) }
+
         binding.swipeRefreshLayout.isRefreshing = true
-        if(!isOnline()){
+        if (!isOnline()) {
             binding.tvText.visibility = View.VISIBLE
             binding.swipeRefreshLayout.isRefreshing = false
         }
@@ -83,9 +89,11 @@ class AllNewsFragment : FragmentBaseMVVM<FragmentAllNewsBinding>() {
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
                     return true
                 }
+
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
                     return true
                 }
+
                 capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
                     return true
                 }

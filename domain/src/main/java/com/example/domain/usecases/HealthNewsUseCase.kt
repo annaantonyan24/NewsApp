@@ -7,8 +7,6 @@ import com.example.data.model.model.room.NewsDataModel
 import com.example.data.repository.NewsRepository
 import com.example.data.util.Constants
 import com.example.domain.interactors.HealthNewsInteractor
-import com.example.domain.model.Data
-import com.example.domain.utils.toNews
 import com.example.domain.utils.toNewsModel
 import kotlinx.coroutines.withContext
 

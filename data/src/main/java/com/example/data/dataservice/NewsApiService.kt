@@ -17,6 +17,14 @@ interface NewsApiService {
         @Query("apiKey") key: String = API_KEY
     ): Response<News>
 
+    @GET("top-headlines")
+    suspend fun getNews(
+        @Query("language") language: String = "en",
+        @Query("pageSize") pageSize: Int = 40,
+        @Query("apiKey") key: String = API_KEY,
+        @Query("category") category: String
+    ): Response<News>
+
     // Popular News
     @GET("top-headlines")
     suspend fun getHealthNews(

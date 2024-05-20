@@ -17,9 +17,9 @@ class NewsRepositoryImpl(
     private val myNewsDao: MyNewsDao
 ) : NewsRepository {
 
-    override suspend fun getAllNewsData(): ActionResult<News> =
+    override suspend fun getNewsData(category: String): ActionResult<News> =
         makeApiCall({
-            analyzeResponse(newsApiService.getAllNews())
+            analyzeResponse(newsApiService.getNews(category = category))
         })
 
     override suspend fun getHealthNewsData(): ActionResult<News> =

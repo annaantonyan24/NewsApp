@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.data.di.apiModule
 import com.example.data.di.newsDB
 import com.example.data.di.repositoryModule
+import com.example.diplomayin.di.appModule
 import com.example.diplomayin.di.viewModelModule
 import com.example.domain.di.interactorModule
 import org.koin.android.ext.koin.androidContext
@@ -21,10 +22,14 @@ class App: Application() {
     }
 
     private val modules = listOf(
+        appModule,
         viewModelModule,
         apiModule,
         repositoryModule,
         interactorModule,
         newsDB
     )
+
+    fun getInstance(): Application = this
+
 }

@@ -6,6 +6,6 @@ import com.example.domain.model.Data
 
 interface NewsInteractor {
 
-    suspend operator fun invoke(): ActionResult<List<NewsDataModel>>
+    suspend operator fun invoke(category: String): ActionResult<List<NewsDataModel>>
 
 }

@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.diplomayin.fragments.allNews.AllNewsFragment
+import com.example.diplomayin.fragments.allNews.NewsFragment
 import com.example.diplomayin.fragments.technologyNews.TechnologyNewsFragment
 import com.example.diplomayin.fragments.healthNews.HealthNewsFragment
 
@@ -17,7 +17,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return AllNewsFragment()
+            0 -> return NewsFragment()
             1 -> return HealthNewsFragment()
         }
         return TechnologyNewsFragment()

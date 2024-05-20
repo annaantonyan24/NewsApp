@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Diplomayin</string>
+    <string name="app_name">News</string>
+    <string name="nav_open">Nav Open</string>
+    <string name="nav_close">Nav Close</string>
     <string name="news">News</string>
     <string name="search">Search</string>
     <string name="saved">Saved</string>
@@ -13,6 +15,9 @@
     <string name="lbl_camera">Camera</string>
     <string name="lbl_gallery">Gallery</string>
     <string name="add_news">Add News</string>
+    <string name="reader">I am reader</string>
+    <string name="writer">I am writer</string>
+    <string name="categories">Categories</string>
     <string name="lbl_title">Title</string>
     <string name="lbl_description">Description</string>
     <string name="lbl_category">Category</string>

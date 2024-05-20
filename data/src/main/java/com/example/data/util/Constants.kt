@@ -8,6 +8,7 @@ class Constants {
         const val ERROR_DATA=100
         const val ERROR_NULL_DATA=101
         const val DATE_PATTERN = "hh:mm dd/MM/yyyy"
+        const val NAV_DRAWER_CATEGORY_KEY = "NAV_DRAWER_CATEGORY_KEY"
 
     }
 }
